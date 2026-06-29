@@ -12,6 +12,7 @@
   --secondary: #797979;
   --text-02: #3b3b3b;
   --text-03: #a2a2a2;
+  --text-04: #646464;
 }
 
 @theme inline {
@@ -23,6 +24,7 @@
   --color-black: var(--black);
   --color-text-02: var(--text-02);
   --color-text-03: var(--text-03);
+  --color-text-04: var(--text-04);
   --color-orange: var(--orange);
   --color-orange-dark: var(--orange-dark);
   --color-gray: var(--gray);
