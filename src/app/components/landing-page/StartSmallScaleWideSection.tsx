@@ -16,11 +16,11 @@ const teams = [
     href: "/operations-teams",
   },
   {
-    title: "Risk",
+    title: "Executive monitoring",
     description:
-      "Surface exposure patterns, flag anomalies early, and support decision-making with real-time risk visibility.",
-    image: "/teams-assets/team-3.webp",
-    href: "/risk-teams",
+      "Provide high-level dashboards with system health, financial flow insights, and operational performance metrics.",
+    image: "/teams-assets/team-6.webp",
+    href: "/executive-monitoring-teams",
   },
   {
     title: "Fraud",
@@ -33,15 +33,15 @@ const teams = [
     title: "Support",
     description:
       "Give customer support teams unified transaction context to resolve issues faster and with fewer escalations.",
-    image: "/teams-assets/team-5.webp",
+    image: "/teams-assets/team-8.webp",
     href: "/support-teams",
   },
   {
-    title: "Executive monitoring",
+    title: "Risk",
     description:
-      "Provide high-level dashboards with system health, financial flow insights, and operational performance metrics.",
-    image: "/teams-assets/team-6.webp",
-    href: "/executive-monitoring-teams",
+      "Surface exposure patterns, flag anomalies early, and support decision-making with real-time risk visibility.",
+    image: "/teams-assets/team-3.webp",
+    href: "/risk-teams",
   },
 ];
 

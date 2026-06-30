@@ -4,8 +4,12 @@ const sectionClassName = "mb-12 scroll-mt-24 lg:mb-20";
 
 export function LegalPage({ children }: { children: React.ReactNode }) {
   return (
-    <main className="flex-1">
-      <div className="container mx-auto max-w-3xl px-4 py-16 lg:py-24">
+    <main className="relative flex-1 overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 bg-[url('/kairo-assets/kairo-logo-icon-large.webp')] bg-contain bg-top-right bg-no-repeat sm:-right-32 sm:-top-32 sm:h-96 sm:w-96 lg:h-112 lg:w-lg"
+      />
+      <div className="relative z-10 container mx-auto max-w-3xl px-4 py-16 lg:py-24">
         {children}
       </div>
     </main>
