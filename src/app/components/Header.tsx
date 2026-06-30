@@ -10,7 +10,7 @@ const mainNavLinks = [
   { label: "Enterprise", href: "/enterprise" },
   { label: "Business", href: "/business" },
   { label: "Personal", href: "/personal" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "/about" },
 ] as const;
 
 const navLinkClassName =

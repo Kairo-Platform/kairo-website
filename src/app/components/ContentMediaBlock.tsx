@@ -17,6 +17,7 @@ export type ContentMediaPosition = "left" | "right" | "top" | "bottom";
 export type ContentMediaBlockProps = {
   title?: string;
   heading: string;
+  subheading?: string;
   description?: string;
   image?: string;
   imageAlt?: string;
@@ -56,6 +57,7 @@ const layoutClasses: Record<
 export function ContentMediaBlock({
   title,
   heading,
+  subheading,
   description,
   image,
   imageAlt,
@@ -81,6 +83,7 @@ export function ContentMediaBlock({
           <p className="font-medium text-accent">{title}</p>
         ) : null}
         <h3 className="text-2xl font-medium lg:text-5xl">{heading}</h3>
+        {subheading && <p className="text-base text-secondary lg:text-lg mb-4">{subheading}</p>}
         {description && <p className="text-base text-secondary lg:text-lg">{description}</p>}
         {list && (
           <ul className="flex flex-col gap-4">

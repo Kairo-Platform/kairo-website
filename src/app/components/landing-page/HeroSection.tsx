@@ -17,12 +17,12 @@ export const HeroSection = () => {
         aria-hidden="true"
         className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-radial from-orange/10 via-orange/5 to-transparent blur-3xl"
       />
-      <div className="relative z-10 container mx-auto flex max-w-3xl flex-col items-center p-10 px-4 text-center">
-        <h1 className="text-5xl font-medium leading-14">
+      <div className="relative z-10 container mx-auto flex max-w-200 flex-col items-center p-10 px-4 text-center">
+        <h1 className="text-4xl lg:text-5xl xl:text-6xl font-medium leading-16">
           <span className="text-accent">Operational Intelligence </span>
           for Financial Institutions
         </h1>
-        <p className="mt-6 text-text-03 text-lg max-w-2xl">
+        <p className="mt-6 text-secondary font-medium text-lg max-w-2xl">
           Reduce operational leakage, eliminate manual reconciliation bottlenecks,
           and gain full visibility across your financial infrastructure.
         </p>
