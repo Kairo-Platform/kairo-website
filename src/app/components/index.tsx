@@ -8,3 +8,4 @@ export * from "./TeamCardsGrid";
 export * from "./SplitContentMediaBlock";
 export * from "./FeatureCardsSection";
 export * from "./StackedStepCards";
+export * from "./StackedIconCards";
