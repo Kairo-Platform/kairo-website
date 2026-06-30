@@ -65,12 +65,12 @@ const footerSections: FooterSection[] = [
     links: [
       {
         label: "LinkedIn",
-        href: "https://www.linkedin.com/company/kairo",
+        href: "https://www.linkedin.com/company/usekairoai/",
         external: true,
       },
       {
         label: "X",
-        href: "https://x.com/kairo",
+        href: "https://x.com/usekairoai",
         external: true,
       },
     ],

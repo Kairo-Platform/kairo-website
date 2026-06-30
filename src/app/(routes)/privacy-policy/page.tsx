@@ -34,7 +34,6 @@ const tableOfContents = [
   { id: "whatsapp-third-party", label: "WhatsApp & Third-Party Channels" },
   { id: "cookies-tracking", label: "Cookies & Tracking (Website)" },
   { id: "childrens-privacy", label: "Children's Privacy" },
-  { id: "international-transfers", label: "International Data Transfers" },
   { id: "changes-to-policy", label: "Changes to This Policy" },
   { id: "contact-us", label: "Contact Us & Grievance Redressal" },
 ];
@@ -65,8 +64,7 @@ const legalBasisItems = [
 const dataRetentionItems = [
   {
     key: "Identity verification data (BVN-derived):",
-    value:
-      "Duration of account + minimum period required by CBN/NDPA after closure.",
+    value: "Duration of account + 5 years after account closure.",
   },
   {
     key: "Transaction records",
@@ -76,12 +74,11 @@ const dataRetentionItems = [
   {
     key: "WhatsApp/chat conversation logs:",
     value:
-      "Duration of account + [TO BE CONFIRMED] period for support and dispute resolution",
+      "Duration of account + 5 years for support and dispute resolution.",
   },
   {
     key: "Voice recordings:",
-    value:
-      "Processed for intent extraction; raw audio retention period to be confirmed based on technical architecture (recommend minimizing retention where feasible)",
+    value: "5 years from the date of recording.",
   },
   {
     key: "Marketing consent and preferences:",
@@ -266,13 +263,12 @@ export default function PrivacyPolicyPage() {
               person or business on the other end of the transaction.
             </LegalParagraph>
           </LegalSubsection>
-          <LegalSubsection title="5.2 With licensed financial partners">
+          <LegalSubsection title="5.2 With licensed financial institutions">
             <LegalParagraph>
-              Kairo partners with a licensed bank or financial institution to
-              issue wallets and hold customer funds, as required by Nigerian
-              financial regulations. Your identity verification data (including
-              BVN-derived information) is shared with this partner as necessary
-              to open and maintain your wallet.
+              Where required to provide wallet services under Nigerian financial
+              regulations, we may share your identity verification data (including
+              BVN-derived information) with licensed banks or financial
+              institutions as necessary to open and maintain your wallet.
             </LegalParagraph>
           </LegalSubsection>
           <LegalSubsection title="5.3 With identity verification providers">
@@ -346,7 +342,7 @@ export default function PrivacyPolicyPage() {
               "Your BVN is used to confirm your full name, date of birth, and other identity attributes directly with NIBSS or an authorized verification provider.",
               "We do not use your BVN to access your bank account balance, view your transaction history at other banks, or move money out of any external bank account.",
               "Your BVN is encrypted in storage and in transit, and access to it within Kairo is restricted to systems and personnel directly involved in identity verification and regulatory compliance.",
-              "We retain BVN-derived identity data for as long as your account is active and for the minimum period required thereafter by applicable financial recordkeeping regulations (typically five to seven years after account closure, depending on applicable CBN/NDPA requirements — to be confirmed against current regulation at time of publication).",
+              "We retain BVN-derived identity data for as long as your account is active and for 5 years after account closure.",
               "Identity verification (including BVN, and where applicable, NIN — National Identification Number) is also required to activate a Kairo Business wallet for the business owner.",
             ]}
           />
@@ -430,22 +426,25 @@ export default function PrivacyPolicyPage() {
 
         <LegalSection id="cookies-tracking" title="Cookies & Tracking (Website)">
           <LegalParagraph>
-            Our website (and Kairo Business web dashboard, where applicable)
-            uses cookies and similar tracking technologies to:
+            When you visit our website (and, where applicable, the Kairo
+            Business web dashboard), we and our service providers may use
+            cookies, local storage, and similar technologies to operate the
+            site, remember your preferences, and understand how our pages are
+            used in aggregate.
           </LegalParagraph>
           <LegalList
             items={[
-              "Keep you logged in and maintain your session",
-              "Understand how visitors use our website, to improve its design and content",
-              "Measure the effectiveness of our marketing campaigns",
+              "Strictly necessary cookies required for core site functionality and security",
+              "Preference cookies that remember choices you make, such as language or region, where available",
+              "Analytics cookies that help us measure traffic and improve our content and user experience",
             ]}
           />
           <LegalParagraph>
-            You can control cookies through your browser settings. Disabling
-            cookies may affect the functionality of certain website features.
-            We do not use cookies to track you across third-party websites for
-            advertising purposes [confirm/adjust based on actual ad tech stack
-            before publishing].
+            We do not use cookies to track you across unrelated third-party
+            websites for targeted advertising, and we do not sell personal
+            information collected through cookies. You can manage or delete
+            cookies through your browser settings; blocking strictly necessary
+            cookies may affect how parts of the site work.
           </LegalParagraph>
         </LegalSection>
 
@@ -458,23 +457,6 @@ export default function PrivacyPolicyPage() {
             children. If we become aware that we have inadvertently collected
             information from a person under the applicable minimum age, we will
             take steps to delete that information promptly.
-          </LegalParagraph>
-        </LegalSection>
-
-        <LegalSection
-          id="international-transfers"
-          title="International Data Transfers"
-        >
-          <LegalParagraph>
-            Kairo may process and store personal information on servers located
-            within Nigeria and, where necessary to deliver our Services, in
-            other jurisdictions. Where personal information is transferred
-            internationally, we implement appropriate safeguards consistent with
-            applicable data protection law, including the Nigeria Data
-            Protection Act 2023 and, where applicable, standard contractual
-            clauses or equivalent mechanisms. [TO BE CONFIRMED WITH COUNSEL —
-            detail actual hosting locations and transfer mechanisms before
-            publishing].
           </LegalParagraph>
         </LegalSection>
 

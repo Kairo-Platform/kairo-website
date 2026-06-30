@@ -119,7 +119,7 @@ export default function TermsOfUsePage() {
             items={[
               "Be at least 18 years old, or the minimum age required under applicable law to enter binding financial agreements and hold a BVN.",
               "Have the legal capacity to enter into a binding contract.",
-              "Possess a valid Bank Verification Number (BVN) or other identity credential acceptable to Kairo and its licensed banking partner, where required to activate a wallet.",
+              "Possess a valid Bank Verification Number (BVN) or other identity credential acceptable to Kairo, where required to activate a wallet.",
               "Not be barred from using financial services under any applicable law, including sanctions, anti-money laundering (AML), or counter-terrorism financing (CTF) regulations.",
               "For Kairo Business: be authorized to act on behalf of the business you are registering, where applicable.",
               "For Kairo Enterprise: be a duly licensed or regulated financial institution, or an entity otherwise approved by Kairo to access Enterprise products, and have entered into an applicable Master Services Agreement.",
@@ -135,11 +135,9 @@ export default function TermsOfUsePage() {
         <LegalSection id="kairo-personal" title="Kairo Personal — Terms of Use">
           <LegalSubsection title="2.1 Wallet services">
             <LegalParagraph>
-              Kairo Personal provides you with a digital wallet, issued in
-              partnership with [LICENSED BANKING PARTNER NAME], a licensed
-              financial institution regulated by the Central Bank of Nigeria.
-              Funds held in your Kairo wallet are held by our banking partner
-              on your behalf, in accordance with applicable banking and e-money
+              Kairo Personal provides you with a digital wallet in accordance
+              with applicable Central Bank of Nigeria regulations. Funds held in
+              your Kairo wallet are subject to applicable banking and e-money
               regulations.
             </LegalParagraph>
           </LegalSubsection>
@@ -191,8 +189,8 @@ export default function TermsOfUsePage() {
               Kairo Business provides a business wallet, invoicing tools, a
               storefront, and related features to help you collect payments and
               operate your business through WhatsApp and the Kairo web dashboard.
-              Your business wallet is subject to the same banking partnership
-              and regulatory framework.
+              Your business wallet is subject to the same regulatory framework
+              applicable to Kairo Personal wallet services.
             </LegalParagraph>
           </LegalSubsection>
           <LegalSubsection title="3.2 Storefront content">
@@ -330,7 +328,7 @@ export default function TermsOfUsePage() {
               "You agree to provide accurate, current, and complete information during registration and to keep such information updated.",
               "You are responsible for maintaining the confidentiality and security of your account and any credentials associated with it.",
               "You agree to notify Kairo immediately of any unauthorized use of your account or any other breach of security.",
-              "Kairo reserves the right to decline registration, or to suspend a wallet, where identity verification fails, raises fraud or compliance concerns, or where required by applicable law or our licensed banking partner.",
+              "Kairo reserves the right to decline registration, or to suspend a wallet, where identity verification fails, raises fraud or compliance concerns, or where required by applicable law.",
               "You may only maintain one personal Kairo wallet linked to a single verified identity, unless otherwise permitted by Kairo.",
             ]}
           />
@@ -456,12 +454,10 @@ export default function TermsOfUsePage() {
             <LegalParagraph>
               To the maximum extent permitted by applicable law, Kairo&apos;s
               total liability to you for any claim arising out of or relating to
-              these Terms or the Services shall not exceed the greater of (a) the
-              fees you paid to Kairo in the twelve (12) months preceding the
-              claim, or (b) [INSERT APPLICABLE STATUTORY MINIMUM OR AGREED CAP —
-              TO BE CONFIRMED WITH COUNSEL]. Kairo shall not be liable for any
-              indirect, incidental, special, consequential, or punitive damages,
-              including loss of profits, data, or goodwill.
+              these Terms or the Services shall not exceed the fees you paid to
+              Kairo in the twelve (12) months preceding the claim. Kairo shall
+              not be liable for any indirect, incidental, special, consequential,
+              or punitive damages, including loss of profits, data, or goodwill.
             </LegalParagraph>
           </LegalSubsection>
           <LegalSubsection title="11.3 No liability for unauthorized access due to your negligence">
@@ -506,7 +502,7 @@ export default function TermsOfUsePage() {
               items={[
                 "You violate these Terms, including the Prohibited Uses in Section 8",
                 "Kairo reasonably suspects fraudulent, illegal, or unauthorized activity on your account",
-                "Required to do so by Kairo's licensed banking partner, a regulator, or applicable law",
+                "Required to do so by a regulator, court order, or applicable law",
                 "Your identity verification cannot be confirmed or is found to be inaccurate",
                 "For Kairo Business: non-payment of subscription fees beyond an applicable grace period",
                 "For Kairo Enterprise: as set out in the applicable Master Services Agreement",
@@ -534,8 +530,7 @@ export default function TermsOfUsePage() {
             <LegalParagraph>
               These Terms are governed by and construed in accordance with the
               laws of the Federal Republic of Nigeria, without regard to its
-              conflict of law principles [TO BE CONFIRMED WITH COUNSEL — ADJUST
-              IF KAIRO IS INCORPORATED OR PRIMARILY REGULATED ELSEWHERE].
+              conflict of law principles.
             </LegalParagraph>
           </LegalSubsection>
           <LegalSubsection title="14.2 Informal resolution first">
@@ -546,19 +541,7 @@ export default function TermsOfUsePage() {
               through this channel.
             </LegalParagraph>
           </LegalSubsection>
-          <LegalSubsection title="14.3 Arbitration / dispute forum">
-            <LegalParagraph>
-              Any dispute arising out of or relating to these Terms that cannot
-              be resolved informally shall be referred to and finally resolved
-              by arbitration in [INSERT CITY], in accordance with the Arbitration
-              and Conciliation Act (or successor legislation) of Nigeria, by a
-              single arbitrator appointed in accordance with that Act [TO BE
-              CONFIRMED WITH COUNSEL — CONSIDER WHETHER COURT JURISDICTION IS
-              PREFERABLE FOR CERTAIN CLAIM TYPES, AND WHETHER A CONSUMER
-              PROTECTION CARVE-OUT IS REQUIRED].
-            </LegalParagraph>
-          </LegalSubsection>
-          <LegalSubsection title="14.4 Enterprise disputes">
+          <LegalSubsection title="14.3 Enterprise disputes">
             <LegalParagraph>
               Disputes arising under a Kairo Enterprise Master Services Agreement
               shall be resolved in accordance with the dispute resolution
