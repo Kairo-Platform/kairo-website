@@ -129,7 +129,16 @@ export function LegalContactBlock({
       {lines.map(({ label, value }) => (
         <p key={label}>
           <span className="font-medium text-text-02">{label}: </span>
-          {value}
+          {label.toLowerCase() === "email" ? (
+            <a
+              href={`mailto:${value}`}
+              className="text-accent transition-colors duration-200 ease-in-out hover:underline"
+            >
+              {value}
+            </a>
+          ) : (
+            value
+          )}
         </p>
       ))}
     </div>

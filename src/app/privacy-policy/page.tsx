@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { KAIRO_CONTACT } from "../constants/contact";
 import {
   LegalContactBlock,
   LegalIntro,
@@ -504,16 +505,11 @@ export default function PrivacyPolicyPage() {
             lines={[
               {
                 label: "Email",
-                value:
-                  "privacy@kairo.ai [confirm actual contact email before publishing]",
+                value: KAIRO_CONTACT.privacyEmail,
               },
               {
                 label: "Address",
-                value: "[INSERT REGISTERED COMPANY ADDRESS]",
-              },
-              {
-                label: "Phone/WhatsApp",
-                value: "[INSERT SUPPORT NUMBER]",
+                value: KAIRO_CONTACT.address,
               },
             ]}
           />

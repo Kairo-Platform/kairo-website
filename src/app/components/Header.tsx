@@ -2,17 +2,55 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { businessMailto } from "@/app/constants/contact";
 
 const mainNavLinks = [
-  { label: "Enterprise", href: "#enterprise" },
-  { label: "Business", href: "#business" },
+  { label: "Enterprise", href: "/enterprise" },
+  { label: "Business", href: "/business" },
   { label: "Personal", href: "#personal" },
   { label: "About", href: "#about" },
 ] as const;
 
 const navLinkClassName =
   "rounded-3xl px-3 py-2 font-medium text-text-02 transition-colors duration-200 ease-in-out hover:bg-gray";
+
+function isActiveNavLink(pathname: string, href: string) {
+  if (href.startsWith("#")) return false;
+  if (href === "/") return pathname === "/";
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function getNavLinkClassName(pathname: string, href: string) {
+  return `${navLinkClassName} ${isActiveNavLink(pathname, href) ? "bg-gray" : ""}`.trim();
+}
+
+function NavLink({
+  href,
+  children,
+  className,
+  onClick,
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+}) {
+  const pathname = usePathname();
+
+  return (
+    <Link
+      href={href}
+      className={className ?? getNavLinkClassName(pathname, href)}
+      onClick={onClick}
+      aria-current={isActiveNavLink(pathname, href) ? "page" : undefined}
+    >
+      {children}
+    </Link>
+  );
+}
 
 const ctaClassName =
   "rounded-3xl px-4 py-2 font-medium text-white bg-accent transition-colors duration-200 ease-in-out hover:bg-accent-hover";
@@ -103,9 +141,9 @@ export function Header() {
               className="hidden items-center gap-4 md:flex"
             >
               {mainNavLinks.map(({ label, href }) => (
-                <Link key={href} href={href} className={navLinkClassName}>
+                <NavLink key={href} href={href}>
                   {label}
-                </Link>
+                </NavLink>
               ))}
             </nav>
           </div>
@@ -114,10 +152,8 @@ export function Header() {
             aria-label="Account navigation"
             className="hidden items-center gap-4 md:flex"
           >
-            <Link href="#login" className={navLinkClassName}>
-              Login
-            </Link>
-            <Link href="#get-started" className={ctaClassName}>
+            <NavLink href="#login">Login</NavLink>
+            <Link href={businessMailto("Get started with Kairo")} className={ctaClassName}>
               Get started
             </Link>
           </nav>
@@ -138,26 +174,21 @@ export function Header() {
         >
           <div className="flex flex-col gap-4 py-4">
             {mainNavLinks.map(({ label, href }) => (
-              <Link
+              <NavLink
                 key={href}
                 href={href}
-                className={navLinkClassName}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {label}
-              </Link>
+              </NavLink>
             ))}
 
             <div className="mt-4 flex flex-col gap-4 border-t border-gray/80 pt-4">
-              <Link
-                href="#login"
-                className={navLinkClassName}
-                onClick={() => setMobileMenuOpen(false)}
-              >
+              <NavLink href="#login" onClick={() => setMobileMenuOpen(false)}>
                 Login
-              </Link>
+              </NavLink>
               <Link
-                href="#get-started"
+                href={businessMailto("Get started with Kairo")}
                 className={`${ctaClassName} text-center`}
                 onClick={() => setMobileMenuOpen(false)}
               >

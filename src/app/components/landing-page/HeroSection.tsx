@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import { businessMailto } from "@/app/constants/contact";
 
 export const HeroSection = () => {
   return (
@@ -24,13 +25,13 @@ export const HeroSection = () => {
           Reduce operational leakage, eliminate manual reconciliation bottlenecks,
           and gain full visibility across your financial infrastructure.
         </p>
-        <button
-          type="button"
+        <a
+          href={businessMailto("Book a Kairo demo")}
           className="mt-8 cursor-pointer flex items-center justify-center gap-2 rounded-3xl bg-accent px-4 py-2 font-medium text-white transition-colors duration-200 ease-in-out hover:bg-accent-hover"
         >
           Book a demo
           <Icon icon="material-symbols:chevron-right-rounded" />
-        </button>
+        </a>
       </div>
     </section>
   );

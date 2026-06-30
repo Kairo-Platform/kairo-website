@@ -7,12 +7,20 @@
   --white: #ffffff;
   --black: #0a0a0a;
   --orange-dark: #bf5014;
+  --orange-dark-02: #80360d;
   --gray: #f5f5f5;
+  --gray-02: #fcfbf9;
   --primary: var(--foreground);
   --secondary: #797979;
   --text-02: #3b3b3b;
   --text-03: #a2a2a2;
   --text-04: #646464;
+  --purple: #8650bf;
+  --purple-light: #f0e5fc;
+  --green: #00bf06;
+  --green-light: #f4fcf3;
+  --yellow: #f6bb01;
+  --yellow-light: #fff5d9;
 }
 
 @theme inline {
@@ -27,9 +35,17 @@
   --color-text-04: var(--text-04);
   --color-orange: var(--orange);
   --color-orange-dark: var(--orange-dark);
+  --color-orange-dark-02: var(--orange-dark-02);
   --color-gray: var(--gray);
+  --color-gray-02: var(--gray-02);
   --color-accent: var(--orange);
   --color-accent-hover: var(--orange-dark);
+  --color-purple: var(--purple);
+  --color-purple-light: var(--purple-light);
+  --color-green: var(--green);
+  --color-green-light: var(--green-light);
+  --color-yellow: var(--yellow);
+  --color-yellow-light: var(--yellow-light);
   --font-sans: var(--font-dm-sans);
 }
 
@@ -71,4 +87,61 @@ body {
 }
 .slick-slider .slick-slide > div {
   padding: 0 12px;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.hero-float {
+  animation: hero-float 5s ease-in-out infinite;
+}
+
+.hero-float-delayed {
+  animation: hero-float 5s ease-in-out infinite;
+  animation-delay: 1.25s;
+}
+
+.hero-float-image {
+  transition: transform 300ms ease-in-out;
+}
+
+.hero-float-image:hover {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-float,
+  .hero-float-delayed {
+    animation: none;
+  }
+
+  .hero-float-image:hover {
+    transform: none;
+  }
+
+  .stacked-step-cards-track {
+    animation: none;
+  }
+}
+
+@keyframes stacked-step-cards-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(var(--stacked-cards-scroll-distance, -50%));
+  }
+}
+
+.stacked-step-cards-track {
+  animation: stacked-step-cards-scroll 28s linear infinite;
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { KAIRO_CONTACT } from "../constants/contact";
 import {
   LegalContactBlock,
   LegalIntro,
@@ -84,9 +85,9 @@ export default function TermsOfUsePage() {
         <LegalParagraph>
           These Terms of Use govern your access to and use of Kairo&apos;s
           products and services — Kairo Personal, Kairo Business, and Kairo
-          Enterprise (together, the &ldquo;Services&rdquo;) — provided by [KAIRO
-          LEGAL ENTITY NAME], a company incorporated in Nigeria with its
-          registered address at [INSERT ADDRESS].
+          Enterprise (together, the &ldquo;Services&rdquo;) — provided by{" "}
+          {KAIRO_CONTACT.legalEntityName}, a company incorporated in Nigeria with
+          its registered address at {KAIRO_CONTACT.address}
         </LegalParagraph>
         <LegalParagraph>
           By creating a Kairo account, accessing Kairo through WhatsApp or any
@@ -631,16 +632,11 @@ export default function TermsOfUsePage() {
             lines={[
               {
                 label: "Email",
-                value:
-                  "legal@kairo.ai [confirm actual contact email before publishing]",
+                value: KAIRO_CONTACT.legalEmail,
               },
               {
                 label: "Address",
-                value: "[INSERT REGISTERED COMPANY ADDRESS]",
-              },
-              {
-                label: "Phone/WhatsApp",
-                value: "[INSERT SUPPORT NUMBER]",
+                value: KAIRO_CONTACT.address,
               },
             ]}
           />

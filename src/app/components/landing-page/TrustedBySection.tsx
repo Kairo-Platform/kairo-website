@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import { InstitutionScroller } from "@/app/components";
+import { businessMailto } from "@/app/constants/contact";
 
 const financialInstitutions = [
   "Banks",
@@ -20,13 +21,13 @@ export const TrustedBySection = () => {
           <h2 className="text-3xl font-bold">
             Trusted By Modern Financial Operations Teams. Built for:
           </h2>
-          <button
-            type="button"
+          <a
+            href={businessMailto("Explore Kairo")}
             className="mt-10 flex cursor-pointer items-center justify-center gap-2 rounded-3xl bg-accent px-4 py-2 font-medium text-white transition-colors duration-200 ease-in-out hover:bg-accent-hover"
           >
             Explore Kairo
             <Icon icon="material-symbols:chevron-right-rounded" />
-          </button>
+          </a>
         </div>
 
         <InstitutionScroller items={financialInstitutions} />

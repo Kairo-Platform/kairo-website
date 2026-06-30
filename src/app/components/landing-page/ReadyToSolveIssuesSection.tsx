@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import Image from "next/image";
+import { businessMailto } from "@/app/constants/contact";
 
 export const ReadyToSolveIssuesSection = () => {
   return (
@@ -10,13 +11,13 @@ export const ReadyToSolveIssuesSection = () => {
         </h2>
         <p className="text-pretty text-lg">Your Financial Infrastructure Already Generates Operational Data.
           Kairo turns it into operational intelligence.</p>
-        <button
-          type="button"
+        <a
+          href={businessMailto("Explore Kairo Enterprise deployment")}
           className="mt-10 flex cursor-pointer items-center justify-center gap-2 rounded-3xl bg-accent px-4 py-2 font-medium text-white transition-colors duration-200 ease-in-out hover:bg-accent-hover"
         >
           Explore Enterprise Deployment
           <Icon icon="material-symbols:chevron-right-rounded" />
-        </button>
+        </a>
       </div>
       <div className="w-full lg:w-1/2 max-h-200 overflow-hidden">
         <Image
