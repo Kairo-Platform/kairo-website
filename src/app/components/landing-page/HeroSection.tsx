@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react";
 import { businessMailto } from "@/app/constants/contact";
+import Image from "next/image";
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex min-h-screen justify-center overflow-hidden bg-[url('/landing-page/hero-bg-image.webp')] bg-cover bg-center py-24 pt-16">
+    <section className="relative flex flex-col min-h-screen justify-center overflow-hidden bg-[url('/landing-page/hero-bg-image.webp')] bg-cover bg-center py-24 pt-16">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0 bg-linear-to-b from-transparent via-white/80 to-white"
@@ -17,7 +18,7 @@ export const HeroSection = () => {
         className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-radial from-orange/10 via-orange/5 to-transparent blur-3xl"
       />
       <div className="relative z-10 container mx-auto flex max-w-3xl flex-col items-center p-10 px-4 text-center">
-        <h1 className="text-5xl font-bold">
+        <h1 className="text-5xl font-medium leading-14">
           <span className="text-accent">Operational Intelligence </span>
           for Financial Institutions
         </h1>
@@ -32,6 +33,9 @@ export const HeroSection = () => {
           Book a demo
           <Icon icon="material-symbols:chevron-right-rounded" />
         </a>
+      </div>
+      <div className="w-full z-10 lg:w-1/2 max-h-200 overflow-hidden mx-auto mt-10">
+        <Image src="/landing-page/dashboard-1.svg" alt="Kairo Dashboard" width={500} height={500} className="object-contain object-center rounded-2xl w-full h-full" />
       </div>
     </section>
   );

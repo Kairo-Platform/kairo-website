@@ -6,14 +6,14 @@ export const ReadyToSolveIssuesSection = () => {
   return (
     <section className="pt-24 p-10 lg:pl-20 flex flex-wrap items-center gap-16">
       <div className="mx-auto lg:max-w-1/3 lg:mb-10">
-        <h2 className="text-3xl font-semibold lg:text-4xl mb-4">
+        <h2 className="text-3xl font-medium lg:text-4xl mb-4">
           Ready to resolve operational issues in real time?
         </h2>
         <p className="text-pretty text-lg">Your Financial Infrastructure Already Generates Operational Data.
           Kairo turns it into operational intelligence.</p>
         <a
           href={businessMailto("Explore Kairo Enterprise deployment")}
-          className="mt-10 flex cursor-pointer items-center justify-center gap-2 rounded-3xl bg-accent px-4 py-2 font-medium text-white transition-colors duration-200 ease-in-out hover:bg-accent-hover"
+          className="mt-10 w-max flex cursor-pointer items-center justify-center gap-2 rounded-3xl bg-accent px-4 py-2 font-medium text-white transition-colors duration-200 ease-in-out hover:bg-accent-hover"
         >
           Explore Enterprise Deployment
           <Icon icon="material-symbols:chevron-right-rounded" />

@@ -19,7 +19,7 @@ export const ForEveryHustleSection = () => {
           </h2>
           <a
             href={businessMailto("Start free with Kairo Business")}
-            className="mt-10 flex cursor-pointer items-center justify-center gap-2 rounded-3xl border border-accent px-4 py-2 font-medium text-accent transition-colors duration-200 ease-in-out hover:bg-accent hover:text-white"
+            className="mt-10 w-max flex cursor-pointer items-center justify-center gap-2 rounded-3xl border border-accent px-4 py-2 font-medium text-accent transition-colors duration-200 ease-in-out hover:bg-accent hover:text-white"
           >
             Start free today
             <Icon icon="material-symbols:chevron-right-rounded" />

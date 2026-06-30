@@ -7,7 +7,7 @@ export const FlexibleDeploymentModelsSection = () => {
     <section className="py-24">
       <div className="container mx-auto flex flex-col gap-16 px-4">
         <div className="mx-auto max-w-3xl text-center lg:mb-10">
-          <h2 className="text-4xl font-semibold lg:text-5xl">
+          <h2 className="text-4xl font-medium leading-14 lg:text-5xl">
             Flexible deployment models
           </h2>
         </div>

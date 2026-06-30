@@ -50,7 +50,7 @@ export const StartSmallScaleWideSection = () => {
     <section className="bg-black py-24 text-white">
       <div className="container mx-auto flex flex-col gap-16 px-4">
         <div className="mx-auto text-center lg:mb-10">
-          <h2 className="text-4xl font-semibold lg:text-5xl">
+          <h2 className="text-4xl font-medium leading-14 lg:text-5xl">
             Start Small. <span className="text-accent">Scale Institution-Wide.</span>
           </h2>
         </div>

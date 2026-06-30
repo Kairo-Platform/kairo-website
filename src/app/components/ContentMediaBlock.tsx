@@ -1,4 +1,15 @@
+"use client";
+
 import Image from "next/image";
+import {
+  type RevealAnimation,
+  getDefaultMediaAnimation,
+  getDefaultTextAnimation,
+  getRevealAnimationClasses,
+  mediaRevealTransitionClass,
+  revealTransitionClass,
+  useRevealOnScroll,
+} from "./revealAnimation";
 
 export type ContentMediaPosition = "left" | "right" | "top" | "bottom";
 
@@ -9,6 +20,8 @@ export type ContentMediaBlockProps = {
   image?: string;
   imageAlt?: string;
   imagePosition?: ContentMediaPosition;
+  textAnimation?: RevealAnimation;
+  mediaAnimation?: RevealAnimation;
   className?: string;
 };
 
@@ -45,13 +58,22 @@ export function ContentMediaBlock({
   image,
   imageAlt,
   imagePosition = "right",
+  textAnimation,
+  mediaAnimation,
   className = "",
 }: ContentMediaBlockProps) {
+  const { ref, isVisible } = useRevealOnScroll();
   const layout = layoutClasses[imagePosition];
+  const resolvedTextAnimation =
+    textAnimation ?? getDefaultTextAnimation(imagePosition);
+  const resolvedMediaAnimation =
+    mediaAnimation ?? getDefaultMediaAnimation(imagePosition);
 
   return (
-    <article className={`${layout.container} ${className}`.trim()}>
-      <div className={`flex flex-1 flex-col gap-4 text-balance ${layout.text}`}>
+    <article ref={ref} className={`${layout.container} ${className}`.trim()}>
+      <div
+        className={`motion-reduce:translate-none motion-reduce:opacity-100 flex flex-1 flex-col gap-4 text-balance ${layout.text} ${getRevealAnimationClasses(resolvedTextAnimation, isVisible, revealTransitionClass)}`}
+      >
         {title ? (
           <p className="font-medium text-accent">{title}</p>
         ) : null}
@@ -59,14 +81,18 @@ export function ContentMediaBlock({
         <p className="text-base text-secondary lg:text-lg">{description}</p>
       </div>
 
-      <div className={`flex flex-1 ${layout.media}`}>
-        <div className={`relative aspect-4/3 w-full p-6 overflow-hidden rounded-2xl max-h-96 ${image ? "" : "bg-gray "}`}>
+      <div
+        className={`motion-reduce:translate-none motion-reduce:opacity-100 flex flex-1 ${layout.media} ${getRevealAnimationClasses(resolvedMediaAnimation, isVisible, mediaRevealTransitionClass)}`}
+      >
+        <div
+          className={`relative aspect-4/3 w-full max-h-96 overflow-hidden rounded-2xl p-6 ${image ? "" : "bg-gray "}`}
+        >
           {image ? (
             <Image
               src={image}
               alt={imageAlt ?? heading}
               fill
-              className="object-contain object-center rounded-2xl"
+              className="rounded-2xl object-contain object-center"
             />
           ) : null}
         </div>
