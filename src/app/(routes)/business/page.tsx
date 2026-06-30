@@ -5,7 +5,7 @@ import {
   ForEveryHustleSection,
   UpAndRunningSection,
   YourHustleSection
-} from "../components/business-page";
+} from "../../components/business-page";
 
 export const BusinessesPage = () => { 
   return (

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { KAIRO_CONTACT } from "../constants/contact";
+import { KAIRO_CONTACT } from "../../constants/contact";
 import {
   LegalContactBlock,
   LegalIntro,
@@ -11,7 +11,7 @@ import {
   LegalSection,
   LegalSubsection,
   LegalTableOfContents,
-} from "../components/legal/LegalDocument";
+} from "../../components/legal/LegalDocument";
 
 export const metadata: Metadata = {
   title: "Terms of Use | Kairo",
