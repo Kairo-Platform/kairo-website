@@ -10,19 +10,21 @@ import {
   revealTransitionClass,
   useRevealOnScroll,
 } from "./revealAnimation";
+import { Icon } from "@iconify/react";
 
 export type ContentMediaPosition = "left" | "right" | "top" | "bottom";
 
 export type ContentMediaBlockProps = {
   title?: string;
   heading: string;
-  description: string;
+  description?: string;
   image?: string;
   imageAlt?: string;
   imagePosition?: ContentMediaPosition;
   textAnimation?: RevealAnimation;
   mediaAnimation?: RevealAnimation;
   className?: string;
+  list?: string[];
 };
 
 const layoutClasses: Record<
@@ -61,6 +63,7 @@ export function ContentMediaBlock({
   textAnimation,
   mediaAnimation,
   className = "",
+  list,
 }: ContentMediaBlockProps) {
   const { ref, isVisible } = useRevealOnScroll();
   const layout = layoutClasses[imagePosition];
@@ -77,8 +80,18 @@ export function ContentMediaBlock({
         {title ? (
           <p className="font-medium text-accent">{title}</p>
         ) : null}
-        <h3 className="text-2xl font-bold lg:text-3xl">{heading}</h3>
-        <p className="text-base text-secondary lg:text-lg">{description}</p>
+        <h3 className="text-2xl font-medium lg:text-5xl">{heading}</h3>
+        {description && <p className="text-base text-secondary lg:text-lg">{description}</p>}
+        {list && (
+          <ul className="flex flex-col gap-4">
+            {list.map((item) => (
+              <li className="flex lg:text-2xl items-center gap-2" key={item}>
+                <Icon icon="material-symbols:check-circle-outline" className="text-accent" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div
