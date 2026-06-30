@@ -14,6 +14,8 @@ export type StackedIconCardItem = {
   title: string;
   textColor?: string;
   bgColor?: string;
+  iconColor?: string;
+  iconBgColor?: string;
 };
 
 export type StackedIconCardsProps = {
@@ -42,13 +44,19 @@ function StackedIconCard({
   title,
   textColor = "text-primary",
   bgColor = "bg-gray",
+  iconColor,
+  iconBgColor = "bg-gray",
 }: StackedIconCardItem) {
+  const resolvedIconColor = iconColor ?? textColor;
+
   return (
     <article
       className={`flex h-80 w-80 shrink-0 flex-col justify-between rounded-2xl p-6 ${bgColor}`}
     >
-      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gray shadow-sm">
-        <Icon icon={icon} className={`text-2xl ${textColor}`} aria-hidden />
+      <div
+        className={`flex h-14 w-14 items-center justify-center rounded-full shadow-sm ${iconBgColor}`}
+      >
+        <Icon icon={icon} className={`text-2xl ${resolvedIconColor}`} aria-hidden />
       </div>
       <h3 className={`text-pretty text-2xl font-medium ${textColor}`}>
         {title}
@@ -123,14 +131,13 @@ export function StackedIconCards({
         }}
       >
         <div
-          className={`flex h-full w-max ${isInView ? "gap-10" : ""} ${transitionClass} ${
-            shouldAutoScroll ? "stacked-step-cards-track" : ""
-          }`}
+          className={`flex h-full w-max ${isInView ? "gap-10" : ""} ${transitionClass} ${shouldAutoScroll ? "stacked-step-cards-track" : ""
+            }`}
           style={
             shouldAutoScroll
               ? {
-                  ["--stacked-cards-scroll-distance" as string]: `-${(items.length * (CARD_WIDTH + 40)) / 2}px`,
-                }
+                ["--stacked-cards-scroll-distance" as string]: `-${(items.length * (CARD_WIDTH + 40)) / 2}px`,
+              }
               : undefined
           }
         >
@@ -140,9 +147,8 @@ export function StackedIconCards({
             return (
               <div
                 key={`${item.title}-${index}`}
-                className={`shrink-0 ${transitionClass} ${
-                  isStackedCard && index > 0 ? "-ml-24" : ""
-                }`}
+                className={`shrink-0 ${transitionClass} ${isStackedCard && index > 0 ? "-ml-24" : ""
+                  }`}
                 style={{
                   zIndex: isStackedCard ? index : undefined,
                 }}

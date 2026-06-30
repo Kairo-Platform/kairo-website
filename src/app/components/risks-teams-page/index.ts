@@ -1,4 +1,4 @@
 export * from "./RisksTeamsHeroSection";
-export * from "./SpeedAndControlSection";
+export * from "./SmartRiskDecisionsSection";
 export * from "./KairoRisksDetailsSection";
 export * from "./BuiltForRiskSection";

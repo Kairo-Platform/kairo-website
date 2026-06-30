@@ -11,7 +11,7 @@ export const SpeedAndControlSection = () => {
         </h2>
         <p className="text-pretty text-lg">Automate transaction matching, reduce operational risk, and close books faster with Kairo.</p>
         <a
-          href={businessMailto("Explore Kairo Enterprise deployment")}
+          href={businessMailto("Book a demo")}
           className="mt-10 w-max flex cursor-pointer items-center justify-center gap-2 rounded-3xl bg-accent px-4 py-2 font-medium text-white transition-colors duration-200 ease-in-out hover:bg-accent-hover"
         >
           Book a demo

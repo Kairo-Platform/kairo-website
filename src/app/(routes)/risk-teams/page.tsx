@@ -1,7 +1,7 @@
 import { 
   RisksTeamsHeroSection, 
   KairoRisksDetailsSection, 
-  SpeedAndControlSection,
+  SmartRiskDecisionsSection,
   BuiltForRiskSection 
 } from "@/app/components/risks-teams-page";
 
@@ -12,7 +12,7 @@ export default function ReconciliationTeamsPage() {
       <RisksTeamsHeroSection />
       <KairoRisksDetailsSection />
       <BuiltForRiskSection />
-      <SpeedAndControlSection />
+      <SmartRiskDecisionsSection />
     </>
   )
 }

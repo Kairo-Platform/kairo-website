@@ -86,7 +86,7 @@ export function ContentMediaBlock({
           <ul className="flex flex-col gap-4">
             {list.map((item) => (
               <li className="flex lg:text-2xl items-center gap-2" key={item}>
-                <Icon icon="material-symbols:check-circle-outline" className="text-accent" />
+                <Icon icon="material-symbols:check-circle-outline" className="text-accent shrink-0" />
                 <span>{item}</span>
               </li>
             ))}
