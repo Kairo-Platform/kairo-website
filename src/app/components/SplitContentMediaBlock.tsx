@@ -1,12 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import {
+  type RevealAnimation,
+  getDefaultMediaAnimation,
+  getDefaultTextAnimation,
+  getRevealAnimationClasses,
+  mediaRevealTransitionClass,
+  revealTransitionClass,
+  useRevealOnScroll,
+} from "./revealAnimation";
 
 export type SplitContentMediaPosition = "left" | "right" | "top" | "bottom";
-
-/** Hidden-state entrance direction. `fade` = opacity only. */
-export type RevealAnimation = "fade" | "left" | "right" | "top" | "bottom";
 
 export type SplitContentMediaBlockProps = {
   heading: string;
@@ -46,82 +51,6 @@ function getVerticalOrder(imagePosition: SplitContentMediaPosition) {
   }
 
   return { text: "order-1", media: "order-2" };
-}
-
-function getDefaultTextAnimation(
-  imagePosition: SplitContentMediaPosition,
-): RevealAnimation {
-  switch (imagePosition) {
-    case "top":
-      return "bottom";
-    case "bottom":
-      return "top";
-    case "left":
-      return "right";
-    case "right":
-      return "left";
-  }
-}
-
-function getDefaultMediaAnimation(
-  imagePosition: SplitContentMediaPosition,
-): RevealAnimation {
-  return imagePosition;
-}
-
-function getHiddenAnimationClasses(animation: RevealAnimation) {
-  switch (animation) {
-    case "fade":
-      return "opacity-4";
-    case "left":
-      return "-translate-x-8 opacity-0";
-    case "right":
-      return "translate-x-8 opacity-0";
-    case "top":
-      return "-translate-y-8 opacity-0";
-    case "bottom":
-      return "translate-y-8 opacity-0";
-  }
-}
-
-function getRevealAnimationClasses(
-  animation: RevealAnimation,
-  isVisible: boolean,
-  base: string,
-) {
-  if (isVisible) {
-    return `${base} translate-x-0 translate-y-0 opacity-100`;
-  }
-
-  return `${base} ${getHiddenAnimationClasses(animation)}`;
-}
-
-const revealTransitionClass =
-  "transition-all duration-[1200ms] ease-out motion-reduce:transition-none";
-const mediaRevealTransitionClass =
-  "transition-all duration-[1200ms] ease-out delay-300 motion-reduce:transition-none";
-
-function useRevealOnScroll() {
-  const ref = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" },
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
-
-  return { ref, isVisible };
 }
 
 export function SplitContentMediaBlock({

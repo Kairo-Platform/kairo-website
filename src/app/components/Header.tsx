@@ -9,7 +9,7 @@ import { businessMailto } from "@/app/constants/contact";
 const mainNavLinks = [
   { label: "Enterprise", href: "/enterprise" },
   { label: "Business", href: "/business" },
-  { label: "Personal", href: "#personal" },
+  { label: "Personal", href: "/personal" },
   { label: "About", href: "#about" },
 ] as const;
 
