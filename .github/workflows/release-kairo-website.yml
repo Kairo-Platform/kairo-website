@@ -27,7 +27,7 @@ jobs:
       - name: Ensure deploy commit uses Vercel team email
         run: |
           git config user.name "Kairo Bot"
-          git config user.email "dev@ikonik.com.ng"
+          git config user.email ${{ secrets.KAIRO_BOT_EMAIL }}
           git commit --allow-empty -m "ci(vercel): trigger deploy as team member" || echo "No changes to commit"
           git push || echo "No push needed"
 
