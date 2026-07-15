@@ -3,7 +3,7 @@ import Link from "next/link";
 
 type FooterLink = {
   label: string;
-  href: string;
+  href?: string;
   external?: boolean;
 };
 
@@ -16,41 +16,38 @@ const footerSections: FooterSection[] = [
   {
     title: "Solutions",
     links: [
-      { label: "Kairo Recon", href: "#kairo-recon" },
-      { label: "Kairo Fraud", href: "#kairo-fraud" },
-      { label: "Kairo Flow", href: "#kairo-flow" },
-      { label: "Kairo Support", href: "#kairo-support" },
-      { label: "Kairo Insights", href: "#kairo-insights" },
-      { label: "Kairo Connect", href: "#kairo-connect" },
+      { label: "Kairo Recon" },
+      { label: "Kairo Fraud" },
+      { label: "Kairo Flow" },
+      { label: "Kairo Support" },
+      { label: "Kairo Insights" },
+      { label: "Kairo Connect" },
     ],
   },
   {
     title: "Features",
     links: [
-      { label: "Role-based permissions", href: "#role-based-permissions" },
-      { label: "Approval workflows", href: "#approval-workflows" },
-      { label: "Escalation routing", href: "#escalation-routing" },
-      { label: "Audit logs", href: "#audit-logs" },
-      { label: "Activity tracking", href: "#activity-tracking" },
-      { label: "Multi-team collaboration", href: "#multi-team-collaboration" },
-      {
-        label: "Controlled communication approvals",
-        href: "#controlled-communication-approvals",
-      },
+      { label: "Role-based permissions" },
+      { label: "Approval workflows" },
+      { label: "Escalation routing" },
+      { label: "Audit logs" },
+      { label: "Activity tracking" },
+      { label: "Multi-team collaboration" },
+      { label: "Controlled communication approvals" },
     ],
   },
   {
     title: "Kairo connect",
     links: [
-      { label: "Core banking applications", href: "#core-banking-applications" },
-      { label: "Switches", href: "#switches" },
-      { label: "Payment gateways", href: "#payment-gateways" },
-      { label: "ERP systems", href: "#erp-systems" },
-      { label: "Settlement providers", href: "#settlement-providers" },
-      { label: "Emails", href: "#emails" },
-      { label: "Slack", href: "#slack" },
-      { label: "Webhooks", href: "#webhooks" },
-      { label: "Internal operational systems", href: "#internal-operational-systems" },
+      { label: "Core banking applications" },
+      { label: "Switches" },
+      { label: "Payment gateways" },
+      { label: "ERP systems" },
+      { label: "Settlement providers" },
+      { label: "Emails" },
+      { label: "Slack" },
+      { label: "Webhooks" },
+      { label: "Internal operational systems" },
     ],
   },
   {
@@ -77,10 +74,16 @@ const footerSections: FooterSection[] = [
   },
 ];
 
+const footerItemClassName = "inline-block text-sm text-text-03";
+
 const footerLinkClassName =
-  "inline-block rounded text-sm text-text-03 transition-colors duration-200 ease-in-out hover:text-white";
+  `${footerItemClassName} rounded transition-colors duration-200 ease-in-out hover:text-white`;
 
 function FooterNavLink({ label, href, external }: FooterLink) {
+  if (!href) {
+    return <span className={footerItemClassName}>{label}</span>;
+  }
+
   if (external) {
     return (
       <a
@@ -107,7 +110,7 @@ function FooterNavSection({ title, links }: FooterSection) {
       <h2 className="mb-4 text-sm font-semibold text-white">{title}</h2>
       <ul className="flex flex-col gap-3">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={link.label}>
             <FooterNavLink {...link} />
           </li>
         ))}

@@ -18,7 +18,7 @@ export const TrustedBySection = () => {
     <section className="py-24">
       <div className="container mx-auto flex flex-col items-center gap-12 px-4 lg:flex-row lg:items-center lg:gap-10">
         <div className="max-w-xl text-center lg:text-left">
-          <h2 className="text-3xl font-medium leading-14">
+          <h2 className="text-3xl font-medium leading-10">
             Trusted By Modern Financial Operations Teams. Built for:
           </h2>
           <a
