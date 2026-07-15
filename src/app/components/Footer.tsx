@@ -67,7 +67,7 @@ const footerSections: FooterSection[] = [
       },
       {
         label: "X",
-        href: "https://x.com/usekairoai",
+        href: "https://x.com/useKairoco",
         external: true,
       },
     ],
