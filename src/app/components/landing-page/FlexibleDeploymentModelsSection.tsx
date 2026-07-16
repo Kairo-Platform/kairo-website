@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 
 export const FlexibleDeploymentModelsSection = () => {
-  const models = ["Use Kairo-managed AI infrastructure", "Connect your preferred LLM provider", "⁠Bring their own AI models", "⁠Deploy institution-specific AI environments"]
+  const models = ["Use Kairo-managed AI infrastructure", "Connect your preferred LLM provider", "⁠Bring your own AI models", "⁠Deploy institution-specific AI environments"]
 
   return (
     <section className="py-24">
