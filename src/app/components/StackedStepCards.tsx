@@ -47,7 +47,7 @@ function StackedStepCard({
     <article
       className={`flex h-80 w-80 shrink-0 flex-col rounded-2xl p-6 pb-0 ${bgColor}`}
     >
-      <h3 className={`mb-4 text-pretty text-2xl font-medium ${textColor}`}>
+      <h3 className={`mb-4 text-pretty text-2xl font-medium leading-snug ${textColor}`}>
         {title}
       </h3>
       <div className="relative mt-4 min-h-0 flex-1 overflow-hidden">
@@ -128,14 +128,13 @@ export function StackedStepCards({
         }}
       >
         <div
-          className={`flex h-full w-max ${isInView ? "gap-10" : ""} ${transitionClass} ${
-            shouldAutoScroll ? "stacked-step-cards-track" : ""
-          }`}
+          className={`flex h-full w-max ${isInView ? "gap-10" : ""} ${transitionClass} ${shouldAutoScroll ? "stacked-step-cards-track" : ""
+            }`}
           style={
             shouldAutoScroll
               ? {
-                  ["--stacked-cards-scroll-distance" as string]: `-${(items.length * (CARD_WIDTH + 40)) / 2}px`,
-                }
+                ["--stacked-cards-scroll-distance" as string]: `-${(items.length * (CARD_WIDTH + 40)) / 2}px`,
+              }
               : undefined
           }
         >
@@ -145,9 +144,8 @@ export function StackedStepCards({
             return (
               <div
                 key={`${item.title}-${index}`}
-                className={`shrink-0 ${transitionClass} ${
-                  isStackedCard && index > 0 ? "-ml-24" : ""
-                }`}
+                className={`shrink-0 ${transitionClass} ${isStackedCard && index > 0 ? "-ml-24" : ""
+                  }`}
                 style={{
                   zIndex: isStackedCard ? index : undefined,
                 }}

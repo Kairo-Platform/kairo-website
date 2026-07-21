@@ -1,3 +1,4 @@
+import { Reveal } from "@/app/components";
 import { SplitContentMediaBlock } from "../SplitContentMediaBlock";
 import type { SplitContentMediaBlockProps } from "../SplitContentMediaBlock";
 
@@ -40,20 +41,20 @@ const growthSteps: SplitContentMediaBlockProps[] = [
 
 export const CollectAndGrow = () => {
   return (
-    <section className="py-24">
-      <div className="container mx-auto mb-16 px-4">
-        <div className="mx-auto max-w-xl text-center">
-          <h2 className="mb-3 text-5xl font-medium max-sm:text-2xl">
+    <section className="section-padding">
+      <div className="container mx-auto mb-12 px-4 lg:mb-16">
+        <Reveal className="mx-auto max-w-xl text-center">
+          <h2 className="mb-4 text-balance text-3xl font-medium leading-snug sm:text-4xl lg:text-5xl">
             Collect and <span className="text-accent">Grow</span>
           </h2>
-          <p className="text-xl text-secondary font-medium">
+          <p className="text-pretty text-lg font-medium leading-relaxed text-secondary sm:text-xl">
             Everything your business needs to collect money and grow, all from a
             WhatsApp conversation.
           </p>
-        </div>
+        </Reveal>
       </div>
 
-      <div className="flex flex-col gap-12 lg:gap-24 mt-5">
+      <div className="mt-5 flex flex-col gap-12 lg:gap-24">
         {growthSteps.map((step) => (
           <SplitContentMediaBlock key={step.heading} {...step} />
         ))}

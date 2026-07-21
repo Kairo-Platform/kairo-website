@@ -1,4 +1,4 @@
-import { ContentMediaBlock } from "@/app/components";
+import { ContentMediaBlock, Reveal } from "@/app/components";
 
 const features = [
   {
@@ -28,7 +28,6 @@ const features = [
     heading: "AI-powered fraud detection and investigation system",
     description:
       "Monitors suspicious patterns, triggers fraud alerts, manages investigation cases, traces transactions, and analyzes user behavior for risk intelligence.",
-
     image: "/kairo-features/kairo-fraud.svg",
     imagePosition: "left" as const,
   },
@@ -50,16 +49,16 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <section className="py-24">
-      <div className="container mx-auto flex flex-col gap-16 px-4">
-        <div className="mx-auto max-w-3xl text-center lg:mb-10">
-          <h2 className="text-4xl font-medium leading-14 lg:text-5xl">
+    <section className="section-padding">
+      <div className="container mx-auto flex flex-col gap-16 px-4 lg:gap-20">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <h2 className="text-pretty text-4xl font-medium leading-snug lg:text-5xl">
             <span className="text-accent">One platform.</span> Every financial
             operation handled
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col gap-6 lg:gap-20">
+        <div className="flex flex-col gap-12 lg:gap-20">
           {features.map((feature) => (
             <ContentMediaBlock key={feature.title} {...feature} />
           ))}

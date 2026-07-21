@@ -1,12 +1,11 @@
-import { 
-  FraudTeamsHeroSection, 
-  KairoFraudDetailsSection, 
+import {
+  FraudTeamsHeroSection,
+  KairoFraudDetailsSection,
   StayAheadSection,
-  BuiltForFraudSection 
+  BuiltForFraudSection,
 } from "@/app/components/fraud-teams-page";
 
-
-export default function ReconciliationTeamsPage() {
+export default function FraudTeamsPage() {
   return (
     <>
       <FraudTeamsHeroSection />
@@ -14,5 +13,5 @@ export default function ReconciliationTeamsPage() {
       <BuiltForFraudSection />
       <StayAheadSection />
     </>
-  )
+  );
 }

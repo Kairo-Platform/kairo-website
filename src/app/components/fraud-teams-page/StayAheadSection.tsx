@@ -1,34 +1,52 @@
 import { Icon } from "@iconify/react";
 import Image from "next/image";
+import { Reveal } from "@/app/components";
 import { businessMailto } from "@/app/constants/contact";
 
 export const StayAheadSection = () => {
   return (
-    <section className="pt-24 p-10 pb-0 pr-0 lg:pl-20 flex flex-wrap items-center gap-16">
-      <div className="mx-auto lg:max-w-2xl lg:mb-10">
-        <h2 className="text-3xl font-medium lg:text-6xl mb-4 text-balance">
-        Stay ahead of fraudulent activity.
-        </h2>
-        <p className="text-pretty text-lg">Monitor threats, detect suspicious behavior, and respond faster with Kairo.</p>
-        <a
-          href={businessMailto("Book a demo")}
-          className="mt-10 w-max flex cursor-pointer items-center justify-center gap-2 rounded-3xl bg-accent px-4 py-2 font-medium text-white transition-colors duration-200 ease-in-out hover:bg-accent-hover"
+    <section className="pt-24 pr-0 pl-4 sm:pl-6 lg:pl-20">
+      <div className="flex flex-wrap items-center gap-12 lg:gap-16">
+        <Reveal
+          animation="left"
+          className="mx-auto w-full max-w-xl lg:max-w-2xl"
         >
-          Book a demo
-          <Icon icon="material-symbols:chevron-right-rounded" />
-        </a>
-      </div>
-      <div className="w-full lg:w-1/2 max-h-200 overflow-hidden">
-        <Image
-          src="/landing-page/dashboard-2.svg"
-          alt="Kairo Dashboard"
-          width={500}
-          height={500}
-          className="object-contain object-center rounded-2xl w-full h-full"
-        />
+          <h2 className="mb-4 text-balance text-3xl font-medium leading-snug lg:text-6xl lg:leading-tight">
+            Stay ahead of fraudulent activity.
+          </h2>
+          <p className="text-pretty text-lg leading-relaxed text-secondary">
+            Monitor threats, detect suspicious behavior, and respond faster with
+            Kairo.
+          </p>
+          <a
+            href={businessMailto("Book a Kairo Fraud demo")}
+            className="cta-button mt-8"
+          >
+            Book a demo
+            <Icon
+              icon="material-symbols:chevron-right-rounded"
+              aria-hidden="true"
+            />
+          </a>
+        </Reveal>
+
+        <Reveal
+          animation="right"
+          className="w-full max-h-200 overflow-hidden lg:w-1/2 lg:flex-1"
+        >
+          <div className="hero-float mx-auto w-full max-w-2xl">
+            <Image
+              src="/landing-page/dashboard-2.svg"
+              alt="Kairo fraud monitoring dashboard with alerts and risk signals"
+              width={900}
+              height={600}
+              className="hero-float-image h-auto w-full rounded-2xl object-contain object-center"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default StayAheadSection;

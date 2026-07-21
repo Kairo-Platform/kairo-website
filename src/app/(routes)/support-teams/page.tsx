@@ -1,16 +1,15 @@
-import { 
-  SupportTeamsHeroSection, 
-  KairoSupportDetailsSection, 
+import {
+  SupportTeamsHeroSection,
+  KairoSupportDetailsSection,
   RealTimeTransactionSection,
 } from "@/app/components/support-teams-page";
 
-
-export default function ReconciliationTeamsPage() {
+export default function SupportTeamsPage() {
   return (
     <>
       <SupportTeamsHeroSection />
       <KairoSupportDetailsSection />
       <RealTimeTransactionSection />
     </>
-  )
+  );
 }

@@ -94,11 +94,11 @@ export function MediaTextFlex({
         className={`motion-reduce:translate-none motion-reduce:opacity-100 ${layout.text} ${getRevealAnimationClasses(resolvedTextAnimation, isVisible, revealTransitionClass)}`}
       >
         <h3
-          className={`mb-4 text-6xl font-medium max-sm:text-4xl ${titleColor ?? ""}`.trim()}
+          className={`mb-4 text-balance text-6xl font-medium leading-snug max-sm:text-4xl ${titleColor ?? ""}`.trim()}
         >
           {title}
         </h3>
-        <p className="text-lg font-medium text-secondary text-balance">
+        <p className="text-pretty text-lg font-medium leading-relaxed text-secondary">
           {description}
         </p>
       </div>

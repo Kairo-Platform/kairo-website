@@ -21,20 +21,33 @@ type InstitutionScrollerProps = {
 
 export function InstitutionScroller({ items }: InstitutionScrollerProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
+
+    return () => mediaQuery.removeEventListener("change", updatePreference);
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const intervalId = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % items.length);
     }, INTERVAL_MS);
 
     return () => window.clearInterval(intervalId);
-  }, [items.length]);
+  }, [items.length, prefersReducedMotion]);
 
   return (
     <div
       className="relative w-full max-w-lg overflow-hidden"
       style={{ height: VIEWPORT_HEIGHT }}
-      aria-live="polite"
+      aria-live={prefersReducedMotion ? "off" : "polite"}
       aria-label="Financial institutions Kairo is built for"
     >
       <div
@@ -47,7 +60,7 @@ export function InstitutionScroller({ items }: InstitutionScrollerProps) {
       />
 
       <ul
-        className="transition-transform duration-700 ease-in-out"
+        className={prefersReducedMotion ? "" : "transition-transform duration-700 ease-in-out"}
         style={{
           transform: `translateY(${CENTER_OFFSET - activeIndex * ITEM_HEIGHT}px)`,
         }}
@@ -58,7 +71,8 @@ export function InstitutionScroller({ items }: InstitutionScrollerProps) {
           return (
             <li
               key={institution}
-              className="flex items-start justify-start text-2xl font-semibold transition-opacity duration-700 ease-in-out sm:text-3xl"
+              aria-current={index === activeIndex ? "true" : undefined}
+              className={`flex items-start justify-start text-2xl font-semibold sm:text-3xl ${prefersReducedMotion ? "" : "transition-opacity duration-700 ease-in-out"}`}
               style={{
                 height: ITEM_HEIGHT,
                 opacity: getItemOpacity(distance),
@@ -72,3 +86,5 @@ export function InstitutionScroller({ items }: InstitutionScrollerProps) {
     </div>
   );
 }
+
+export default InstitutionScroller;

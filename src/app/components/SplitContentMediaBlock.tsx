@@ -109,11 +109,11 @@ export function SplitContentMediaBlock({
               : "text-center lg:text-left"
             }`}
         >
-          <h3 className={`text-2xl font-medium text-pretty sm:text-4xl lg:text-7xl ${textColor}`}>
+          <h3 className={`text-pretty text-2xl font-medium leading-snug sm:text-4xl sm:leading-tight lg:text-6xl xl:text-7xl ${textColor}`}>
             {heading}
           </h3>
           {description ? (
-            <p className="mt-4 text-base text-secondary sm:text-lg">{description}</p>
+            <p className="mt-4 text-base leading-relaxed text-secondary sm:text-lg">{description}</p>
           ) : null}
         </div>
       </div>

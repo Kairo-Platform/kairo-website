@@ -1,8 +1,13 @@
 import { Icon } from "@iconify/react";
 
-export const FlexibleDeploymentModelsSection = () => {
-  const models = ["Use Kairo-managed AI infrastructure", "Connect your preferred LLM provider", "⁠Bring your own AI models", "⁠Deploy institution-specific AI environments"]
+const deploymentModels = [
+  "Use Kairo-managed AI infrastructure",
+  "Connect your preferred LLM provider",
+  "Bring your own AI models",
+  "Deploy institution-specific AI environments",
+];
 
+export const FlexibleDeploymentModelsSection = () => {
   return (
     <section className="py-24">
       <div className="container mx-auto flex flex-col gap-16 px-4">
@@ -20,7 +25,7 @@ export const FlexibleDeploymentModelsSection = () => {
           <div className="bg-black text-white rounded-2xl flex flex-col justify-center px-10 h-100 min-w-96 w-full max-w-1/2 py-10">
             <h3 className="text-lg font-medium mb-4">Institutions can:</h3>
             <ul className="flex flex-col gap-4">
-              {models.map((model) => (
+              {deploymentModels.map((model) => (
                 <li className="flex lg:text-2xl items-center gap-2" key={model}>
                   <Icon icon="material-symbols:check-circle-outline" className="text-accent" />
                   <span>{model}</span>

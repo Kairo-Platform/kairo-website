@@ -82,14 +82,18 @@ export function ContentMediaBlock({
         {title ? (
           <p className="font-medium text-accent">{title}</p>
         ) : null}
-        <h3 className="text-2xl font-medium lg:text-5xl">{heading}</h3>
-        {subheading && <p className="text-base text-secondary lg:text-lg mb-4">{subheading}</p>}
-        {description && <p className="text-base text-secondary lg:text-lg">{description}</p>}
+        <h3 className="text-2xl font-medium leading-snug lg:text-5xl">{heading}</h3>
+        {subheading && <p className="mb-4 text-base leading-relaxed text-secondary lg:text-lg">{subheading}</p>}
+        {description && <p className="text-base leading-relaxed text-secondary lg:text-lg">{description}</p>}
         {list && (
           <ul className="flex flex-col gap-4">
             {list.map((item) => (
-              <li className="flex lg:text-2xl items-center gap-2" key={item}>
-                <Icon icon="material-symbols:check-circle-outline" className="text-accent shrink-0" />
+              <li className="flex items-start gap-3 text-base leading-relaxed lg:text-2xl" key={item}>
+                <Icon
+                  icon="material-symbols:check-circle-outline"
+                  className="mt-1 shrink-0 text-accent"
+                  aria-hidden="true"
+                />
                 <span>{item}</span>
               </li>
             ))}

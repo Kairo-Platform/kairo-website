@@ -21,7 +21,7 @@ export function TeamCard({
 }: TeamCardProps) {
   return (
     <article
-      className={`group relative min-h-90 overflow-hidden rounded-2xl border border-gray transition-transform duration-300 ease-in-out hover:scale-[1.02] ${className}`.trim()}
+      className={`group relative min-h-90 overflow-hidden rounded-2xl border border-gray transition-transform duration-300 ease-in-out motion-reduce:transition-none hover:scale-[1.02] motion-reduce:hover:scale-100 ${className}`.trim()}
     >
       <Image
         src={image}
@@ -42,7 +42,7 @@ export function TeamCard({
           <p className="mt-2 text-white text-pretty lg:text-base">{description}</p>
           <Link
             href={href}
-            className="mt-4 inline-flex items-center gap-1 font-medium text-accent transition-colors duration-200 ease-in-out hover:text-accent-hover"
+            className="mt-4 inline-flex items-center gap-1 font-medium text-accent transition-colors duration-200 ease-in-out hover:text-accent-hover focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-accent"
           >
             {buttonLabel}
             <Icon icon="material-symbols:chevron-right-rounded" />

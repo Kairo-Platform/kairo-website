@@ -61,8 +61,8 @@ export const revealTransitionClass =
 export const mediaRevealTransitionClass =
   "transition-all duration-[1200ms] ease-out delay-300 motion-reduce:transition-none";
 
-export function useRevealOnScroll() {
-  const ref = useRef<HTMLElement>(null);
+export function useRevealOnScroll<T extends HTMLElement = HTMLDivElement>() {
+  const ref = useRef<T>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export function useRevealOnScroll() {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -6% 0px" },
     );
 
     observer.observe(element);

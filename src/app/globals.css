@@ -21,6 +21,7 @@
   --green-light: #f4fcf3;
   --yellow: #f6bb01;
   --yellow-light: #fff5d9;
+  --orange-light: #fff0e8;
 }
 
 @theme inline {
@@ -46,6 +47,7 @@
   --color-green-light: var(--green-light);
   --color-yellow: var(--yellow);
   --color-yellow-light: var(--yellow-light);
+  --color-orange-light: var(--orange-light);
   --font-sans: var(--font-dm-sans);
 }
 
@@ -63,8 +65,72 @@ body {
 }
 
 h1 {
-  line-height: 82px;
-  letter-spacing: -4%;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+h2 {
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+h3 {
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.section-padding {
+  padding-block: clamp(4rem, 8vw, 6rem);
+}
+
+.cta-button {
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 1.5rem;
+  background-color: var(--orange);
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  color: var(--white);
+  transition: background-color 200ms ease-in-out;
+}
+
+.cta-button:hover {
+  background-color: var(--orange-dark);
+}
+
+.cta-button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.cta-button-outline {
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--orange);
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  color: var(--orange);
+  transition:
+    background-color 200ms ease-in-out,
+    color 200ms ease-in-out;
+}
+
+.cta-button-outline:hover {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.cta-button-outline:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
 }
 
 .shadow-inset-top {

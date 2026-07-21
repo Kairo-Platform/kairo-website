@@ -1,18 +1,24 @@
+import { Reveal } from "@/app/components";
+
 export const OurVisionSection = () => {
   return (
-    <section className="py-24 lg:py-32 bg-[#1A1A1A] text-white">
+    <section className="bg-[#1A1A1A] py-24 text-white lg:py-32">
       <div className="container mx-auto flex flex-col gap-10 px-4 text-center">
-        <div className="mx-auto max-w-3xl text-center lg:mb-10">
-          <h2 className="text-4xl font-medium leading-14 lg:text-6xl">
+        <Reveal className="mx-auto max-w-3xl">
+          <h2 className="text-balance text-4xl font-medium leading-snug lg:text-6xl">
             Our Vision
           </h2>
-        </div>
-        <p className="text-[#E0E0E0] text-3xl lg:text-5xl font-medium leading-16 text-pretty">
-          We envision a future where money moves as naturally as conversation, businesses operate with greater ease, and financial infrastructure is intelligent by default.
-        </p>
+        </Reveal>
+        <Reveal animation="bottom" className="mx-auto max-w-5xl">
+          <p className="text-pretty text-3xl font-medium leading-snug text-[#E0E0E0] lg:text-5xl lg:leading-tight">
+            We envision a future where money moves as naturally as conversation,
+            businesses operate with greater ease, and financial infrastructure is
+            intelligent by default.
+          </p>
+        </Reveal>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default OurVisionSection;

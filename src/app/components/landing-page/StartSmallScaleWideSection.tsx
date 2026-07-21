@@ -1,4 +1,4 @@
-import { TeamCardsGrid } from "../TeamCardsGrid";
+import { Reveal, TeamCardsGrid } from "@/app/components";
 
 const teams = [
   {
@@ -47,13 +47,13 @@ const teams = [
 
 export const StartSmallScaleWideSection = () => {
   return (
-    <section className="bg-black py-24 text-white">
-      <div className="container mx-auto flex flex-col gap-16 px-4">
-        <div className="mx-auto text-center lg:mb-10">
-          <h2 className="text-4xl font-medium leading-14 lg:text-5xl">
+    <section className="section-padding bg-black text-white">
+      <div className="container mx-auto flex flex-col gap-12 px-4 lg:gap-16">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <h2 className="text-balance text-4xl font-medium leading-snug lg:text-5xl">
             Start Small. <span className="text-accent">Scale Institution-Wide.</span>
           </h2>
-        </div>
+        </Reveal>
 
         <TeamCardsGrid items={teams} />
       </div>

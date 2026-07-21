@@ -13,7 +13,8 @@ const features = [
   },
   {
     heading: "Built for modern financial operations",
-    description: "Kairo gives operations teams real-time visibility and control across financial infrastructure.",
+    description:
+      "Kairo gives operations teams real-time visibility and control across financial infrastructure.",
     image: "/teams-assets/transaction-flow.svg",
     imagePosition: "left" as const,
   },
@@ -21,8 +22,8 @@ const features = [
 
 export const KairoReconDetailsSection = () => {
   return (
-    <section className="py-24">
-      <div className="container mx-auto flex flex-col gap-16 px-4">
+    <section className="section-padding">
+      <div className="container mx-auto flex flex-col gap-12 px-4 lg:gap-20">
         {features.map((feature) => (
           <ContentMediaBlock key={feature.heading} {...feature} />
         ))}

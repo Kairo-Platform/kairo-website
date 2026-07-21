@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { InstitutionScroller } from "@/app/components";
+import { InstitutionScroller, Reveal } from "@/app/components";
 import { businessMailto } from "@/app/constants/contact";
 
 const financialInstitutions = [
@@ -15,22 +15,24 @@ const financialInstitutions = [
 
 export const TrustedBySection = () => {
   return (
-    <section className="py-24">
-      <div className="container mx-auto flex flex-col items-center gap-12 px-4 lg:flex-row lg:items-center lg:gap-10">
-        <div className="max-w-xl text-center lg:text-left">
-          <h2 className="text-3xl font-medium leading-10">
+    <section className="section-padding">
+      <div className="container mx-auto flex flex-col items-center gap-12 px-4 lg:flex-row lg:items-center lg:gap-16">
+        <Reveal animation="left" className="max-w-xl text-center lg:text-left">
+          <h2 className="text-balance text-3xl font-medium leading-snug lg:text-4xl">
             Trusted By Modern Financial Operations Teams. Built for:
           </h2>
           <a
             href={businessMailto("Explore Kairo")}
-            className="mt-10 w-max flex cursor-pointer items-center justify-center gap-2 rounded-3xl bg-accent px-4 py-2 font-medium text-white transition-colors duration-200 ease-in-out hover:bg-accent-hover"
+            className="cta-button mt-10"
           >
             Explore Kairo
-            <Icon icon="material-symbols:chevron-right-rounded" />
+            <Icon icon="material-symbols:chevron-right-rounded" aria-hidden="true" />
           </a>
-        </div>
+        </Reveal>
 
-        <InstitutionScroller items={financialInstitutions} />
+        <Reveal animation="right" className="w-full lg:flex-1">
+          <InstitutionScroller items={financialInstitutions} />
+        </Reveal>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { Reveal } from "@/app/components";
 import { StackedIconCards } from "../StackedIconCards";
 
 const cards = [
@@ -21,15 +22,17 @@ const cards = [
 
 export const BuiltForRiskSection = () => {
   return (
-    <section className="py-24">
-      <div className="container mx-auto flex flex-col gap-16 px-4">
-        <h2 className="mb-4 text-balance text-3xl font-medium lg:text-6xl text-center">
-          Built for modern risk operations
-        </h2>
-      </div>
+    <section className="section-padding">
+      <div className="flex flex-col items-center gap-12 lg:gap-16">
+        <Reveal className="mx-auto max-w-4xl px-4">
+          <h2 className="text-center text-balance text-3xl font-medium leading-snug lg:text-6xl lg:leading-tight">
+            Built for modern risk operations
+          </h2>
+        </Reveal>
 
-      <div className="w-full py-10 lg:min-h-120 lg:pt-20">
-        <StackedIconCards items={cards} />
+        <div className="w-full py-10 lg:min-h-120 lg:pt-20">
+          <StackedIconCards items={cards} />
+        </div>
       </div>
     </section>
   );
