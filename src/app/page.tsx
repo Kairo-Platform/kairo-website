@@ -1,14 +1,7 @@
-import { FeaturesSection, FlexibleDeploymentModelsSection, HeroSection, ReadyToSolveIssuesSection, StartSmallScaleWideSection, TrustedBySection } from "./components/landing-page";
+import BusinessesPage from "./(routes)/business/page";
 
-export default function LandingPage() {
+export default function HomePage() {
   return (
-    <>
-      <HeroSection />
-      <TrustedBySection />
-      <FeaturesSection />
-      <FlexibleDeploymentModelsSection />
-      <StartSmallScaleWideSection />
-      <ReadyToSolveIssuesSection />
-    </>
+    <BusinessesPage />
   );
 }

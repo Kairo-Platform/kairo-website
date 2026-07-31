@@ -17,8 +17,7 @@ const navLinkClassName =
   "rounded-3xl px-3 py-2 font-medium text-text-02 transition-colors duration-200 ease-in-out hover:bg-gray";
 
 function isActiveNavLink(pathname: string, href: string) {
-  if (href.startsWith("#")) return false;
-  if (href === "/") return pathname === "/";
+  if (href === "/") return pathname === "/" || pathname === "/business";
 
   return pathname === href || pathname.startsWith(`${href}/`);
 }

@@ -12,7 +12,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Kairo",
-  description: "Operational Intelligence for Financial Institutions.",
+  description:
+    "Collect payments and grow your business with Kairo — a business assistant that lives in your chat.",
 };
 
 export default function RootLayout({

@@ -7,7 +7,7 @@ import {
   YourHustleSection
 } from "../../components/business-page";
 
-export const BusinessesPage = () => { 
+export const BusinessesPage = () => {
   return (
     <>
       <BusinessHeroSection />
