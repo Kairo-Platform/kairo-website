@@ -51,6 +51,13 @@ const footerSections: FooterSection[] = [
     ],
   },
   {
+    title: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Careers", href: "/careers" },
+    ],
+  },
+  {
     title: "Legal",
     links: [
       { label: "Privacy policy", href: "/privacy-policy" },
@@ -132,7 +139,7 @@ export function Footer() {
 
         <nav
           aria-label="Footer navigation"
-          className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+          className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6"
         >
           {footerSections.map((section) => (
             <FooterNavSection key={section.title} {...section} />
