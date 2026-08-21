@@ -71,7 +71,8 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
       <JobClosingCta
         title={job.closing.title}
         body={job.closing.body}
-        applyLabel={"Apply now"}
+        applyLabel="Apply now"
+        applyHref={job.applicationUrl}
       />
     </main>
   );

@@ -1,5 +1,6 @@
 import {
   CareersHeroSection,
+  CareersScrollRestore,
   HowWeWorkSection,
   OpenRolesSection,
 } from "@/app/components/careers-page";
@@ -13,6 +14,7 @@ export const metadata = {
 export default function CareersPage() {
   return (
     <main>
+      <CareersScrollRestore />
       <CareersHeroSection />
       <HowWeWorkSection />
       <OpenRolesSection />

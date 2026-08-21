@@ -19,14 +19,21 @@ export function renderRichText(text: string): ReactNode {
 
 export function JobApplyButton({
   label = "Apply for this role",
+  href,
   className = "",
 }: {
-  label: string;
+  label?: string;
+  href: string;
   className?: string;
 }) {
   return (
-    <button type="button" className={`cta-button shrink-0 ${className}`.trim()}>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`cta-button shrink-0 ${className}`.trim()}
+    >
       {label}
-    </button>
+    </a>
   );
 }

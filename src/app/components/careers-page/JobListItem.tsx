@@ -1,11 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import type { Job } from "@/app/data/jobs";
+import { saveCareersScrollPosition } from "./careersScroll";
 
 export function JobListItem({ job }: { job: Job }) {
   return (
     <Link
       href={`/careers/${job.slug}`}
+      onClick={saveCareersScrollPosition}
       className="group flex items-center justify-between gap-6 border-b border-[#E0E0E0] px-4 py-8 last:border-b-0 transition-colors duration-200 ease-in-out hover:bg-white/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       <div className="min-w-0 flex-1">

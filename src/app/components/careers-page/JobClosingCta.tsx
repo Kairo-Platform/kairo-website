@@ -4,9 +4,15 @@ type JobClosingCtaProps = {
   title: string;
   body: string;
   applyLabel: string;
+  applyHref: string;
 };
 
-export function JobClosingCta({ title, body, applyLabel }: JobClosingCtaProps) {
+export function JobClosingCta({
+  title,
+  body,
+  applyLabel,
+  applyHref,
+}: JobClosingCtaProps) {
   return (
     <section className="section-padding">
       <div className="container mx-auto px-4 lg:px-8 xl:px-16">
@@ -16,7 +22,11 @@ export function JobClosingCta({ title, body, applyLabel }: JobClosingCtaProps) {
         <p className="mt-4 max-w-3xl text-pretty text-lg leading-relaxed sm:text-xl lg:text-2xl lg:leading-10">
           {body}
         </p>
-        <JobApplyButton label={applyLabel} className="mt-8" />
+        <JobApplyButton
+          label={applyLabel}
+          href={applyHref}
+          className="mt-8"
+        />
       </div>
     </section>
   );

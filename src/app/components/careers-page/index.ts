@@ -1,8 +1,10 @@
 export { CareersHeroSection } from "./CareersHeroSection";
+export { CareersScrollRestore } from "./CareersScrollRestore";
 export { HowWeWorkSection } from "./HowWeWorkSection";
 export { OpenRolesSection } from "./OpenRolesSection";
 export { JobListItem } from "./JobListItem";
 export { JobApplyButton, renderRichText } from "./JobApplyButton";
+export { BackToCareersButton } from "./BackToCareersButton";
 export { JobDetailHeader } from "./JobDetailHeader";
 export { JobIntro } from "./JobIntro";
 export { JobSectionList } from "./JobSectionList";

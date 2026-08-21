@@ -24,6 +24,7 @@ export type Job = {
   title: string;
   tagline: string;
   applyLabel: string;
+  applicationUrl: string;
   intro: string[];
   sections: JobSection[];
   closing: {
