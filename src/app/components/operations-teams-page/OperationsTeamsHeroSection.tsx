@@ -46,7 +46,7 @@ export const OperationsTeamsHeroSection = () => {
           <div className="relative w-full">
             <div className="hero-float absolute top-1/2 -left-20 max-lg:-left-5 max-lg:w-1/3">
               <Image
-                src="/teams-assets/transactions-card-2.svg"
+                src="/teams-assets/transactions-card-2.webp"
                 alt="Operations transactions monitoring card"
                 width={300}
                 height={280}

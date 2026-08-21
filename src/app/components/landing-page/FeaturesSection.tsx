@@ -20,7 +20,7 @@ const features = [
     title: "Kairo Support",
     heading: "AI-powered operations support assistant",
     description: "Streamlines internal support through intelligent ticket routing, incident summarization, troubleshooting assistance, and fast operational knowledge retrieval.",
-    image: "/kairo-features/kairo-support.svg",
+    image: "/kairo-features/kairo-support.webp",
     imagePosition: "right" as const,
   },
   {
@@ -28,7 +28,7 @@ const features = [
     heading: "AI-powered fraud detection and investigation system",
     description:
       "Monitors suspicious patterns, triggers fraud alerts, manages investigation cases, traces transactions, and analyzes user behavior for risk intelligence.",
-    image: "/kairo-features/kairo-fraud.svg",
+    image: "/kairo-features/kairo-fraud.webp",
     imagePosition: "left" as const,
   },
   {
@@ -42,7 +42,7 @@ const features = [
     title: "Kairo Connect",
     heading: "Streamlines integration",
     description: "Kairo Connects streamlines integration between core banking, payment gateways, ERP systems, and other key tools—making business operations seamless and connected.",
-    image: "/kairo-features/kairo-connect.svg",
+    image: "/kairo-features/kairo-connect.webp",
     imagePosition: "left" as const,
   },
 ];

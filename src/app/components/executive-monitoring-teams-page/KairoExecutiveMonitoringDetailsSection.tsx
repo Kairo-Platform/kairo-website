@@ -16,7 +16,7 @@ const features = [
     heading: "Built for executive oversight",
     description:
       "From settlement activity to operational efficiency and system performance, Kairo helps executives make faster, data-driven decisions with confidence.",
-    image: "/teams-assets/transaction-flow-7.svg",
+    image: "/teams-assets/transaction-flow-7.webp",
     imagePosition: "left" as const,
   },
 ];

@@ -8,7 +8,7 @@ const features = [
       "Surface exposure patterns across systems and transaction flows.",
       "Improve decision-making with unified risk visibility.",
     ],
-    image: "/teams-assets/transaction-flow-3.svg",
+    image: "/teams-assets/transaction-flow-3.webp",
     imagePosition: "right" as const,
   },
 ];

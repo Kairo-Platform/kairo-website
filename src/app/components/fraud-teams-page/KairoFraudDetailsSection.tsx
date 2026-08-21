@@ -8,7 +8,7 @@ const features = [
       "Trigger real-time alerts for suspicious activity and monitor risk patterns.",
       "Reduce manual fraud investigation with faster, smarter detection.",
     ],
-    image: "/teams-assets/transaction-flow-4.svg",
+    image: "/teams-assets/transaction-flow-4.webp",
     imagePosition: "right" as const,
   },
 ];

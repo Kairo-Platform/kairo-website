@@ -38,7 +38,7 @@ export const BusinessHeroSection = () => {
           <div className="relative w-full">
             <div className="hero-float absolute top-20 -left-20 max-lg:-left-5 max-lg:w-1/3">
               <Image
-                src="/business-assets/wallet-balance.svg"
+                src="/business-assets/wallet-balance.webp"
                 alt="Business wallet balance card"
                 width={250}
                 height={200}
@@ -48,7 +48,7 @@ export const BusinessHeroSection = () => {
             </div>
             <div className="hero-float hero-float-delayed absolute -right-20 bottom-8 max-lg:-right-5 max-lg:w-1/3">
               <Image
-                src="/business-assets/paid-20k.svg"
+                src="/business-assets/paid-20k.webp"
                 alt="Payment received notification for 20,000 Naira"
                 width={250}
                 height={200}

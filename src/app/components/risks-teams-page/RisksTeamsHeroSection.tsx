@@ -43,7 +43,7 @@ export const RisksTeamsHeroSection = () => {
           <div className="relative w-full">
             <div className="hero-float absolute top-10 -left-20 max-lg:-left-5 max-lg:w-1/3">
               <Image
-                src="/teams-assets/risk-icon.svg"
+                src="/teams-assets/risk-icon.webp"
                 alt="Risk monitoring icon"
                 width={150}
                 height={150}

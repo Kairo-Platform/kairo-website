@@ -9,14 +9,14 @@ const features = [
       "Resolve customer complaints faster with fewer handoffs.",
       "Reduce escalation volume with intelligent operational insights.",
     ],
-    image: "/teams-assets/transaction-flow-5.svg",
+    image: "/teams-assets/transaction-flow-5.webp",
     imagePosition: "right" as const,
   },
   {
     heading: "Built for modern support operations",
     description:
       "From failed transfers to delayed settlements and transaction disputes, Kairo helps support teams respond with speed, clarity, and confidence.",
-    image: "/teams-assets/transaction-flow-6.svg",
+    image: "/teams-assets/transaction-flow-6.webp",
     imagePosition: "left" as const,
   },
 ];

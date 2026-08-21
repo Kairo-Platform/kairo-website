@@ -40,7 +40,7 @@ export const PersonalHeroSection = () => {
           <div className="relative w-full">
             <div className="hero-float absolute -top-10 -left-10 max-lg:-left-5 max-lg:w-1/3">
               <Image
-                src="/personal-assets/scan-icon.svg"
+                src="/personal-assets/scan-icon.webp"
                 alt="Snap to pay scan icon"
                 width={200}
                 height={180}
@@ -50,7 +50,7 @@ export const PersonalHeroSection = () => {
             </div>
             <div className="hero-float absolute top-1/2 -left-20 max-lg:-left-5 max-lg:w-1/3">
               <Image
-                src="/personal-assets/whatsapp-logo-white-bg.svg"
+                src="/personal-assets/whatsapp-logo-white-bg.webp"
                 alt="WhatsApp logo"
                 width={200}
                 height={180}
@@ -60,7 +60,7 @@ export const PersonalHeroSection = () => {
             </div>
             <div className="hero-float hero-float-delayed absolute -right-20 bottom-8 max-lg:-right-5 max-lg:w-1/3">
               <Image
-                src="/personal-assets/sent-20k.svg"
+                src="/personal-assets/sent-20k.webp"
                 alt="Money sent notification for 20,000 Naira"
                 width={250}
                 height={200}

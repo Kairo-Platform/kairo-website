@@ -43,7 +43,7 @@ export const ReconciliationTeamsHeroSection = () => {
           <div className="relative w-full">
             <div className="hero-float absolute top-1/2 -left-20 max-lg:-left-5 max-lg:w-1/3">
               <Image
-                src="/teams-assets/transactions-card.svg"
+                src="/teams-assets/transactions-card.webp"
                 alt="Reconciliation transactions card"
                 width={300}
                 height={280}

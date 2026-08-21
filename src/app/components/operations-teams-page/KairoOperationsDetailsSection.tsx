@@ -15,7 +15,7 @@ const features = [
     heading: "Built for modern financial operations",
     description:
       "From payment operations to settlement monitoring and internal process management, Kairo helps operations teams stay proactive, efficient, and in control.",
-    image: "/teams-assets/transaction-flow-2.svg",
+    image: "/teams-assets/transaction-flow-2.webp",
     imagePosition: "left" as const,
   },
 ];

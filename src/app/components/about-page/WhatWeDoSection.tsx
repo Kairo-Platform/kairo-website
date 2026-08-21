@@ -6,7 +6,7 @@ const features = [
     subheading: "Conversational payments for everyday people.",
     description:
       "Users can send money, pay bills, shop, and complete transactions using simple natural language through WhatsApp, voice, or chat in English, Yoruba, Hausa, Pidgin, Igbo, Twi, Swahili, and more.",
-    image: "/what-we-do-assets/kairo-personal.svg",
+    image: "/what-we-do-assets/kairo-personal.webp",
     imagePosition: "right" as const,
   },
   {
@@ -14,7 +14,7 @@ const features = [
     subheading: "An AI-powered business assistant built inside WhatsApp.",
     description:
       "Small businesses can create invoices, collect payments, manage storefronts, automate customer responses, send promotions, and receive business insights — all from conversations they already have every day. Kairo helps businesses collect properly and grow consistently.",
-    image: "/what-we-do-assets/kairo-business.svg",
+    image: "/what-we-do-assets/kairo-business.webp",
     imagePosition: "left" as const,
   },
   {

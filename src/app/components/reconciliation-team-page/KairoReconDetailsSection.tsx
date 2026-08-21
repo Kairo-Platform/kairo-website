@@ -15,7 +15,7 @@ const features = [
     heading: "Built for modern financial operations",
     description:
       "Kairo gives operations teams real-time visibility and control across financial infrastructure.",
-    image: "/teams-assets/transaction-flow.svg",
+    image: "/teams-assets/transaction-flow.webp",
     imagePosition: "left" as const,
   },
 ];
