@@ -39,7 +39,7 @@ export const StartTalkingMoneySection = () => {
           className="flex h-full w-full max-w-xl items-end justify-end lg:w-1/2"
         >
           <Image
-            src="/personal-assets/kairo-whatsapp-start-onboarding.svg"
+            src="/personal-assets/kairo-whatsapp-start-onboarding.webp"
             alt="Kairo Personal WhatsApp onboarding chat"
             width={500}
             height={800}

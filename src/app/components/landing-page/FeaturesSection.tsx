@@ -6,14 +6,14 @@ const features = [
     heading: "AI-powered reconciliation and settlement operations system",
     description:
       "Detects suspicious patterns, tracks transactions, generates fraud alerts, manages investigation cases, and analyzes behavioral activities to identify and prevent fraudulent actions.",
-    image: "/kairo-features/kairo-recon.svg",
+    image: "/kairo-features/kairo-recon.webp",
     imagePosition: "right" as const,
   },
   {
     title: "Kairo Flow",
     heading: "Conversational transaction infrastructure",
     description: "Enables financial institutions to power transactions and operational workflows across chat, voice, messaging platforms, and AI-driven channels.",
-    image: "/kairo-features/kairo-flow.svg",
+    image: "/kairo-features/kairo-flow.webp",
     imagePosition: "left" as const,
   },
   {
@@ -35,7 +35,7 @@ const features = [
     title: "Kairo Insights",
     heading: "Operational intelligence and business analytics tool",
     description: "Monitors revenue gaps, analyze transaction behavior, evaluate merchant performance, measure operational efficiency, and generate AI-powered business reports for smarter decision-making.",
-    image: "/kairo-features/kairo-insights.svg",
+    image: "/kairo-features/kairo-insights.webp",
     imagePosition: "right" as const,
   },
   {

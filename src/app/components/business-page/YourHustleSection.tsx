@@ -39,7 +39,7 @@ export const YourHustleSection = () => {
           className="flex h-full w-full max-w-xl items-end justify-end lg:w-1/2"
         >
           <Image
-            src="/business-assets/kairo-whatsapp-signup-form-2.svg"
+            src="/business-assets/kairo-whatsapp-signup-form-2.webp"
             alt="Kairo Business signup form in WhatsApp"
             width={500}
             height={800}

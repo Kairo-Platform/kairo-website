@@ -57,7 +57,7 @@ export const BusinessHeroSection = () => {
               />
             </div>
             <Image
-              src="/business-assets/kairo-whatsapp-chat-new.svg"
+              src="/business-assets/kairo-whatsapp-chat-new.webp"
               alt="Kairo Business WhatsApp chat showing payment and invoice conversation"
               width={500}
               height={700}

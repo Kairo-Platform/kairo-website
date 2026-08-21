@@ -9,7 +9,7 @@ const features = [
       "View operational performance metrics from one dashboard.",
       "Detect anomalies, delays, and operational risks faster.",
     ],
-    image: "/teams-assets/kairo-dashboard-x.svg",
+    image: "/teams-assets/kairo-dashboard-x.webp",
     imagePosition: "right" as const,
   },
   {

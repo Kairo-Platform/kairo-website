@@ -105,13 +105,15 @@ export function ContentMediaBlock({
         className={`motion-reduce:translate-none motion-reduce:opacity-100 flex flex-1 ${layout.media} ${getRevealAnimationClasses(resolvedMediaAnimation, isVisible, mediaRevealTransitionClass)}`}
       >
         <div
-          className={`relative aspect-4/3 w-full max-h-96 overflow-hidden rounded-2xl p-6 ${image ? "" : "bg-gray "}`}
+          className={`relative aspect-[614/335] w-full max-h-[28rem] overflow-hidden rounded-2xl ${image ? "" : "bg-gray p-6"}`}
         >
           {image ? (
             <Image
               src={image}
               alt={imageAlt ?? heading}
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              quality={95}
               className="rounded-2xl object-contain object-center"
             />
           ) : null}

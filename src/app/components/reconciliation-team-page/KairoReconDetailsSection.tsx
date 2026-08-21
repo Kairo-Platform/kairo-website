@@ -8,7 +8,7 @@ const features = [
       "Spot mismatches and exceptions in real time.",
       "Reduce manual work and keep audit-ready records.",
     ],
-    image: "/teams-assets/reconciliation-dashboard.svg",
+    image: "/teams-assets/reconciliation-dashboard.webp",
     imagePosition: "right" as const,
   },
   {

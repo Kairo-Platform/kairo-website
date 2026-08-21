@@ -46,7 +46,7 @@ export const ExecutiveMonitoringTeamsHeroSection = () => {
           <div className="relative w-full">
             <div className="w-full max-w-xl overflow-hidden rounded-[3rem] rounded-tr-none">
               <Image
-                src="/teams-assets/executive-monitoring-hero-img.svg"
+                src="/teams-assets/executive-monitoring-hero-img.webp"
                 alt="Executive monitoring dashboard with system health and financial flow insights"
                 width={700}
                 height={900}

@@ -132,7 +132,7 @@ export function Header() {
               href="/"
               className="w-auto h-9 font-bold tracking-tight text-foreground transition-opacity duration-200 ease-in-out hover:opacity-80"
             >
-              <Image src="/kairo-assets/kairo-logo.svg" loading="eager" alt="Kairo" width={100} height={100} />
+              <Image src="/kairo-assets/kairo-logo.webp" loading="eager" alt="Kairo" width={100} height={100} />
             </Link>
 
             <nav

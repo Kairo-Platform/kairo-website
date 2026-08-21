@@ -8,7 +8,7 @@ const features = [
       "Detect and manage operational exceptions faster.",
       "Automate workflow routing and escalation processes.",
     ],
-    image: "/teams-assets/reconciliation-dashboard.svg",
+    image: "/teams-assets/reconciliation-dashboard.webp",
     imagePosition: "right" as const,
   },
   {

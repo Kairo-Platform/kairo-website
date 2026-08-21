@@ -13,7 +13,7 @@ export const ThreeWordsSection = () => {
         </Reveal>
 
         <MediaTextFlex
-          image="/personal-assets/send-whatsapp-message.svg"
+          image="/personal-assets/send-whatsapp-message.webp"
           imageAlt="WhatsApp chat showing a plain-language money request"
           title="Say what you want"
           description="Type it, say it, or snap a photo of the account details. Kairo understands plain language — even in Yoruba, Pidgin, Hausa, or Igbo."
@@ -25,7 +25,7 @@ export const ThreeWordsSection = () => {
       <div className="w-full bg-[#F2FCFB] pt-24">
         <div className="container mx-auto flex flex-col items-center gap-12 px-4 lg:gap-16">
           <MediaTextFlex
-            image="/personal-assets/receive-whatsapp-message.svg"
+            image="/personal-assets/receive-whatsapp-message.webp"
             imageAlt="WhatsApp chat showing Kairo confirmation before sending money"
             title="Kairo confirms"
             description="Before anything moves, Kairo shows you a clear summary — recipient, amount, and source. One tap to confirm or simply say “yes.”"
@@ -38,7 +38,7 @@ export const ThreeWordsSection = () => {
       <div className="w-full bg-[#FBF8FF] pt-24">
         <div className="container mx-auto flex flex-col items-center gap-12 px-4 lg:gap-16">
           <MediaTextFlex
-            image="/personal-assets/done-transaction-on-whatsapp.svg"
+            image="/personal-assets/done-transaction-on-whatsapp.webp"
             imageAlt="WhatsApp chat showing a completed transaction receipt"
             title="Done in seconds"
             description="Money sent. Bill paid. Receipt in your chat. Everything tracked automatically so you always know where your money went."

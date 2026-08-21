@@ -22,7 +22,7 @@ const features = [
     subheading: "Operational intelligence infrastructure for financial institutions",
     description:
       "Banks, finTechs, and payment processors use Kairo to automate reconciliation, detect fraud in real time, orchestrate transaction routing, manage operational risk, and power AI-driven financial support systems.",
-    image: "/what-we-do-assets/kairo-enterprise.svg",
+    image: "/what-we-do-assets/kairo-enterprise.webp",
     imagePosition: "right" as const,
   },
 ];

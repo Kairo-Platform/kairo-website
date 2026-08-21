@@ -36,7 +36,7 @@ export const HeroSection = () => {
       </div>
       <div className="hero-float relative z-10 mx-auto mt-10 w-full max-w-3xl px-4 lg:w-1/2">
         <Image
-          src="/landing-page/dashboard-1.svg"
+          src="/landing-page/dashboard-1.webp"
           alt="Kairo operational intelligence dashboard showing transaction monitoring and reconciliation insights"
           width={900}
           height={600}

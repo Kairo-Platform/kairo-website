@@ -134,7 +134,7 @@ export function Footer() {
           href="/"
           className="inline-block mt-10 transition-opacity duration-200 ease-in-out hover:opacity-80"
         >
-          <Image src="/kairo-assets/kairo-logo-white.svg" alt="Kairo" width={200} height={200} />
+          <Image src="/kairo-assets/kairo-logo-white.webp" alt="Kairo" width={200} height={200} />
         </Link>
 
         <nav

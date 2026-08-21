@@ -36,11 +36,11 @@ export const StayAheadSection = () => {
         >
           <div className="hero-float mx-auto w-full max-w-2xl">
             <Image
-              src="/landing-page/dashboard-2.svg"
+              src="/landing-page/dashboard-2.webp"
               alt="Kairo fraud monitoring dashboard with alerts and risk signals"
               width={900}
               height={600}
-              className="hero-float-image h-auto w-full rounded-2xl object-contain object-center"
+              className="hero-float-image h-auto w-full rounded-l-4xl object-contain object-center"
             />
           </div>
         </Reveal>
