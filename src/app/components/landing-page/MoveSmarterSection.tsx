@@ -40,7 +40,7 @@ export function MoveSmarterSection() {
 
         <Reveal
           animation="right"
-          className="flex h-full w-full max-w-xl items-start justify-end overflow-y-hidden lg:w-1/2 lg:max-h-220"
+          className="flex h-full w-full max-w-xl max-h-140 items-start justify-center overflow-y-hidden sm:max-h-160 lg:w-1/2 xl:max-h-220 lg:justify-end"
         >
           <Image
             src="/landing-page/move-smarter-phone.webp"

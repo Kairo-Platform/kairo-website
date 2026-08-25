@@ -30,8 +30,8 @@ function BusinessHeroContent() {
         </a>
       </div>
 
-      <div className="flex w-full h-full max-w-xl items-end justify-end lg:h-full lg:w-1/2">
-        <div className="relative h-full w-full max-w-md lg:max-w-none">
+      <div className="flex h-full w-full max-w-xl items-center justify-center lg:h-full lg:w-1/2 lg:items-end lg:justify-end">
+        <div className="relative mx-auto h-full w-full max-w-md lg:mx-0 lg:max-w-none">
           <div className="hero-float absolute top-16 -left-16 z-10 max-lg:-left-2 max-lg:w-1/3">
             <Image
               src="/business-assets/wallet-balance.webp"
@@ -87,8 +87,8 @@ function PersonalHeroContent() {
         </a>
       </div>
 
-      <div className="flex h-full w-full max-w-xl items-end justify-end lg:h-full lg:w-1/2">
-        <div className="relative h-full w-full max-w-md lg:max-w-none">
+      <div className="flex h-full w-full max-w-xl items-center justify-center lg:h-full lg:w-1/2 lg:items-end lg:justify-end">
+        <div className="relative mx-auto h-full w-full max-w-md lg:mx-0 lg:max-w-none">
           <div className="hero-float absolute -top-8 -left-8 z-10 max-lg:-left-2 max-lg:w-1/3">
             <Image
               src="/personal-assets/scan-icon.webp"
