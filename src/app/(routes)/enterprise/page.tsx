@@ -6,7 +6,7 @@ import {
   ReadyToSolveIssuesSection,
   StartSmallScaleWideSection,
   TrustedBySection,
-} from "@/app/components/landing-page";
+} from "@/app/components/enterprise-page";
 
 export const metadata: Metadata = {
   title: "Kairo Enterprise",

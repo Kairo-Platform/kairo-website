@@ -1,6 +1,5 @@
-export * from "./HeroSection";
-export * from "./TrustedBySection";
-export * from "./FeaturesSection";
-export * from "./FlexibleDeploymentModelsSection";
-export * from "./StartSmallScaleWideSection";
-export * from "./ReadyToSolveIssuesSection";
+export { LandingHeroSection } from "./LandingHeroSection";
+export { EverythingYouNeedSection } from "./EverythingYouNeedSection";
+export { KairoLanguagesSection } from "./KairoLanguagesSection";
+export { BuiltForHowYouLiveSection } from "./BuiltForHowYouLiveSection";
+export { MoveSmarterSection } from "./MoveSmarterSection";

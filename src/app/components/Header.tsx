@@ -7,9 +7,8 @@ import { useState } from "react";
 import { businessMailto } from "@/app/constants/contact";
 
 const mainNavLinks = [
+  { label: "Home", href: "/" },
   { label: "Enterprise", href: "/enterprise" },
-  { label: "Business", href: "/business" },
-  { label: "Personal", href: "/personal" },
   { label: "About", href: "/about" },
 ] as const;
 
@@ -17,7 +16,7 @@ const navLinkClassName =
   "rounded-3xl px-3 py-2 font-medium text-text-02 transition-colors duration-200 ease-in-out hover:bg-gray";
 
 function isActiveNavLink(pathname: string, href: string) {
-  if (href === "/") return pathname === "/" || pathname === "/business";
+  if (href === "/") return pathname === "/";
 
   return pathname === href || pathname.startsWith(`${href}/`);
 }

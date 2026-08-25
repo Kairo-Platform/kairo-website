@@ -30,7 +30,7 @@ export const TrustedBySection = () => {
           </a>
         </Reveal>
 
-        <Reveal animation="right" className="w-full lg:flex-1">
+        <Reveal animation="right" className="w-max shrink-0">
           <InstitutionScroller items={financialInstitutions} />
         </Reveal>
       </div>

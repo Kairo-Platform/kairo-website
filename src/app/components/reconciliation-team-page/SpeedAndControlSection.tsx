@@ -27,7 +27,7 @@ export const SpeedAndControlSection = () => {
         <Reveal animation="right" className="w-full lg:flex-1 max-h-200 overflow-hidden">
           <div className="hero-float mx-auto w-full max-w-2xl">
             <Image
-              src="/landing-page/dashboard-2.webp"
+              src="/enterprise-page/dashboard-2.webp"
               alt="Kairo reconciliation dashboard with matching and exception views"
               width={900}
               height={600}

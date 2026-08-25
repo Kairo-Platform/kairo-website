@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const CARD_WIDTH = 320;
-const CARD_HEIGHT = 320;
+const CARD_HEIGHT = 420;
 const STACK_VISIBLE_RATIO = 0.7;
 const STACK_OVERLAP = CARD_WIDTH * (1 - STACK_VISIBLE_RATIO);
 const STACK_STEP = CARD_WIDTH - STACK_OVERLAP;
@@ -45,7 +45,8 @@ function StackedStepCard({
 }: StackedStepCardItem) {
   return (
     <article
-      className={`flex h-80 w-80 shrink-0 flex-col rounded-2xl p-6 pb-0 ${bgColor}`}
+      className={`flex w-80 shrink-0 flex-col rounded-2xl p-6 pb-0 ${bgColor}`}
+      style={{ height: CARD_HEIGHT }}
     >
       <h3 className={`mb-4 text-pretty text-2xl font-medium leading-snug ${textColor}`}>
         {title}
@@ -54,7 +55,8 @@ function StackedStepCard({
         <Image
           src={image}
           alt={title}
-          fill
+          width={CARD_WIDTH}
+          height={CARD_HEIGHT}
           className="object-contain object-bottom"
         />
       </div>

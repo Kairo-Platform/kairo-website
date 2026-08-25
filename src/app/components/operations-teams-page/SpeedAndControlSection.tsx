@@ -36,7 +36,7 @@ export const SpeedAndControlSection = () => {
         >
           <div className="hero-float mx-auto w-full max-w-2xl">
             <Image
-              src="/landing-page/dashboard-2.webp"
+              src="/enterprise-page/dashboard-2.webp"
               alt="Kairo operations dashboard with workflow and monitoring views"
               width={900}
               height={600}

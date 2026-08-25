@@ -36,7 +36,7 @@ export const RealTimeTransactionSection = () => {
         >
           <div className="hero-float mx-auto w-full max-w-2xl">
             <Image
-              src="/landing-page/dashboard-2.webp"
+              src="/enterprise-page/dashboard-2.webp"
               alt="Kairo executive dashboard with real-time operational performance views"
               width={900}
               height={600}

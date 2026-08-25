@@ -45,7 +45,7 @@ export function InstitutionScroller({ items }: InstitutionScrollerProps) {
 
   return (
     <div
-      className="relative w-full max-w-lg overflow-hidden"
+      className="relative w-max max-w-max overflow-hidden"
       style={{ height: VIEWPORT_HEIGHT }}
       aria-live={prefersReducedMotion ? "off" : "polite"}
       aria-label="Financial institutions Kairo is built for"

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex min-h-[calc(100dvh-4rem)] flex-col justify-center overflow-hidden bg-[url('/landing-page/hero-bg-image.webp')] bg-cover bg-center section-padding pt-16">
+    <section className="relative flex min-h-[calc(100dvh-4rem)] flex-col justify-center overflow-hidden bg-[url('/enterprise-page/hero-bg-image.webp')] bg-cover bg-center section-padding pt-16">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-0 bg-linear-to-b from-transparent via-white/80 to-white"
@@ -36,7 +36,7 @@ export const HeroSection = () => {
       </div>
       <div className="hero-float relative z-10 mx-auto mt-10 w-full max-w-3xl px-4 lg:w-1/2">
         <Image
-          src="/landing-page/dashboard-1.webp"
+          src="/enterprise-page/dashboard-1.webp"
           alt="Kairo operational intelligence dashboard showing transaction monitoring and reconciliation insights"
           width={900}
           height={600}
