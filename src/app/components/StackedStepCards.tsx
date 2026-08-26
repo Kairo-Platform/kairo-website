@@ -45,7 +45,7 @@ function StackedStepCard({
 }: StackedStepCardItem) {
   return (
     <article
-      className={`flex w-80 shrink-0 flex-col rounded-2xl p-6 pb-0 ${bgColor}`}
+      className={`flex w-80 shrink-0 flex-col rounded-t-2xl p-6 pb-0 ${bgColor}`}
       style={{ height: CARD_HEIGHT }}
     >
       <h3 className={`mb-4 text-pretty text-2xl font-medium leading-snug ${textColor}`}>

@@ -13,7 +13,7 @@ const mainNavLinks = [
 ] as const;
 
 const navLinkClassName =
-  "rounded-3xl px-3 py-2 font-medium text-text-02 transition-colors duration-200 ease-in-out hover:bg-gray";
+  "rounded-3xl px-3 py-2 text-[15px] font-medium leading-5 tracking-[-0.01em] text-text-02 transition-colors duration-200 ease-in-out hover:bg-gray";
 
 function isActiveNavLink(pathname: string, href: string) {
   if (href === "/") return pathname === "/";

@@ -47,23 +47,61 @@ function ChatBubble({
   );
 }
 
+const FEATURE_CARD_LOOP_MS = 7000;
+const FEATURE_CARD_RESTART_GAP_MS = 50;
+
 function useFeatureCardInView<T extends HTMLElement = HTMLElement>() {
   const ref = useRef<T>(null);
   const [isInView, setIsInView] = useState(false);
+  const intersectingRef = useRef(false);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
+    let loopTimer: ReturnType<typeof setTimeout> | null = null;
+    let restartTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const clearTimers = () => {
+      if (loopTimer) clearTimeout(loopTimer);
+      if (restartTimer) clearTimeout(restartTimer);
+      loopTimer = null;
+      restartTimer = null;
+    };
+
+    const scheduleLoop = () => {
+      clearTimers();
+      loopTimer = setTimeout(() => {
+        if (!intersectingRef.current) return;
+        // Drop the class so CSS animations can reset, then re-apply.
+        setIsInView(false);
+        restartTimer = setTimeout(() => {
+          if (!intersectingRef.current) return;
+          setIsInView(true);
+          scheduleLoop();
+        }, FEATURE_CARD_RESTART_GAP_MS);
+      }, FEATURE_CARD_LOOP_MS);
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        intersectingRef.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          scheduleLoop();
+        } else {
+          clearTimers();
+          setIsInView(false);
+        }
       },
       { threshold: 0.35, rootMargin: "0px 0px -8% 0px" },
     );
 
     observer.observe(element);
-    return () => observer.disconnect();
+    return () => {
+      clearTimers();
+      observer.disconnect();
+    };
   }, []);
 
   return { ref, isInView };

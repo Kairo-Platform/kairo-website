@@ -38,7 +38,7 @@ export function BuiltForHowYouLiveSection() {
           </h2>
         </Reveal>
 
-        <div className="w-full bg-[#FCFBF9] py-10 lg:min-h-140 lg:pt-20">
+        <div className="w-full bg-[#FCFBF9] pt-10 lg:pt-26">
           <StackedStepCards items={steps} />
         </div>
       </div>

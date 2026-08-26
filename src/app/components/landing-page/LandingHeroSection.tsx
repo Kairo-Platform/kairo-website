@@ -11,7 +11,7 @@ type HeroVariant = "business" | "personal";
 
 function BusinessHeroContent() {
   return (
-    <div className="relative h-full z-10 container mx-auto flex flex-wrap items-center justify-center gap-10 px-4 text-start lg:flex-nowrap lg:gap-24 xl:px-0">
+    <div className="relative h-full z-10 container mx-auto flex flex-wrap  justify-center gap-10 px-4 text-start lg:flex-nowrap lg:gap-24 xl:px-0">
       <div className="flex w-full max-w-xl flex-col items-start max-lg:items-center max-lg:text-balance max-lg:text-center lg:w-1/2">
         <h1 className="text-balance text-5xl font-medium leading-tight max-sm:text-3xl xl:max-w-lg xl:text-6xl">
           Collect Payment and <span className="text-accent">Grow</span> your
@@ -30,8 +30,8 @@ function BusinessHeroContent() {
         </a>
       </div>
 
-      <div className="flex h-full w-full max-w-xl items-center justify-center lg:h-full lg:w-1/2 lg:items-end lg:justify-end">
-        <div className="relative mx-auto h-full w-full max-w-md lg:mx-0 lg:max-w-none">
+      <div className="flex w-full max-w-xl items-center justify-center lg:h-full lg:w-1/2 lg:items-end lg:justify-end">
+        <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:h-full lg:max-w-none">
           <div className="hero-float absolute top-16 -left-16 z-10 max-lg:-left-2 max-lg:w-1/3">
             <Image
               src="/business-assets/wallet-balance.webp"
@@ -58,7 +58,7 @@ function BusinessHeroContent() {
             width={480}
             height={720}
             priority
-            className="relative z-0 mx-auto h-auto w-[85%] max-w-sm object-contain object-center lg:h-full lg:w-full lg:max-w-none"
+            className="relative z-0 mx-auto h-auto w-[85%] max-w-sm object-contain object-center lg:max-w-none"
           />
         </div>
       </div>
@@ -68,7 +68,7 @@ function BusinessHeroContent() {
 
 function PersonalHeroContent() {
   return (
-    <div className="relative h-full z-10 container mx-auto flex flex-wrap items-center justify-center gap-10 px-4 text-start lg:flex-nowrap lg:gap-20 xl:gap-24 xl:px-0">
+    <div className="relative h-full z-10 container mx-auto flex flex-wrap justify-center gap-10 px-4 text-start lg:flex-nowrap lg:gap-20 xl:gap-24 xl:px-0">
       <div className="flex w-full max-w-xl flex-col items-start max-lg:items-center max-lg:text-balance max-lg:text-center lg:w-1/2">
         <h1 className="text-balance text-5xl font-medium italic leading-tight tracking-normal max-sm:text-3xl xl:text-6xl">
           Money <span className="text-accent">moves</span> the way you talk
@@ -87,8 +87,8 @@ function PersonalHeroContent() {
         </a>
       </div>
 
-      <div className="flex h-full w-full max-w-xl items-center justify-center lg:h-full lg:w-1/2 lg:items-end lg:justify-end">
-        <div className="relative mx-auto h-full w-full max-w-md lg:mx-0 lg:max-w-none">
+      <div className="flex w-full max-w-xl items-center justify-center lg:h-full lg:w-1/2 lg:items-end lg:justify-end">
+        <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:h-full lg:max-w-none">
           <div className="hero-float absolute -top-8 -left-8 z-10 max-lg:-left-2 max-lg:w-1/3">
             <Image
               src="/personal-assets/scan-icon.webp"
@@ -128,7 +128,7 @@ function PersonalHeroContent() {
               priority
               quality={95}
               sizes="(max-width: 1024px) 85vw, 40vw"
-              className="h-auto w-full object-contain object-center lg:h-full lg:w-full lg:max-w-none"
+              className="h-auto w-full object-contain object-center lg:max-w-none"
             />
           </div>
         </div>
