@@ -6,15 +6,15 @@ import Link from "next/link";
 
 export function MoveSmarterSection() {
   return (
-    <section className="relative overflow-hidden pt-14 lg:pt-20 px-4 xl:px-0 bg-orange-02">
+    <section className="relative overflow-hidden pt-14 lg:pt-20 bg-orange-02">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-[url('/kairo-assets/kairo-logo-icon-large.webp')] bg-size-[auto_100%] bg-right bg-no-repeat opacity-90"
       />
-      <div className="relative z-10 container mx-auto flex flex-wrap items-center justify-center gap-10 text-start lg:flex-nowrap lg:gap-20 xl:gap-24">
+      <div className="relative z-10 container mx-auto px-4 flex flex-wrap items-center justify-center gap-10 text-start lg:flex-nowrap lg:gap-20 xl:gap-24">
         <Reveal
           animation="left"
-          className="flex w-full max-w-xl flex-col items-start max-lg:items-center max-lg:text-balance max-lg:text-center lg:w-1/2"
+          className="flex w-full max-w-xl flex-col items-start max-lg:items-center max-lg:text-balance max-lg:text-center lg:w-0 lg:flex-1 lg:max-w-none"
         >
           <h2 className="text-balance text-white text-3xl font-medium leading-snug sm:text-4xl lg:text-5xl">
             Move smarter.
@@ -42,7 +42,7 @@ export function MoveSmarterSection() {
 
         <Reveal
           animation="right"
-          className="flex h-full w-full max-w-xl max-h-140 items-start justify-center overflow-y-hidden sm:max-h-160 lg:w-1/2 xl:max-h-220 lg:justify-end"
+          className="flex h-full w-full max-w-xl max-h-140 items-start justify-center overflow-y-hidden sm:max-h-160 lg:w-0 lg:flex-1 lg:max-w-none xl:max-h-220 lg:justify-end"
         >
           <Image
             src="/landing-page/move-smarter-phone.webp"

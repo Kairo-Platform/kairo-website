@@ -62,10 +62,10 @@ const steps = [
 export function BuiltForHowYouLiveSection() {
   return (
     <section
-      className="bg-[#fffcfa] px-6 py-20 lg:py-30"
+      className="bg-[#fffcfa] py-20 lg:py-30"
       aria-labelledby="how-it-works-heading"
     >
-      <div className="mx-auto w-full max-w-350">
+      <div className="container mx-auto px-4">
         <Reveal className="flex flex-col gap-6 md:flex-row justify-center items-center md:items-end md:justify-between">
           <div>
             <p className="mb-3 text-lg leading-7 font-medium tracking-[-0.03em] text-orange  max-md:text-center">

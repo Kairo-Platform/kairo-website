@@ -54,13 +54,13 @@ export function FaqSection() {
   return (
     <section
       aria-labelledby={`${id}-heading`}
-      className="relative isolate overflow-clip bg-[#fffcfa] px-6 py-20 sm:px-10 lg:pb-40"
+      className="relative isolate overflow-clip bg-[#fffcfa] py-20 lg:pb-40"
     >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-33.5 left-0 -z-10 h-310.25 w-[max(100%,1862px)] bg-[url('/landing-page/hero/grid.webp')] bg-cover bg-center bg-no-repeat opacity-8 mix-blend-multiply"
       />
-      <div className="mx-auto grid max-w-333 gap-10 lg:grid-cols-[405fr_830fr] lg:gap-16 xl:gap-24">
+      <div className="container mx-auto grid gap-10 px-4 lg:grid-cols-[405fr_830fr] lg:gap-16 xl:gap-24">
         <Reveal animation="left" className="lg:sticky lg:top-24 lg:self-start">
           <p className="mb-5.75 text-lg leading-7 font-medium tracking-[-0.03em] text-orange max-md:text-center">
             FAQs

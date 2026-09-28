@@ -14,7 +14,7 @@ export function KairoLanguagesSection() {
   return (
     <section
       aria-labelledby="kairo-languages-heading"
-      className="relative isolate mx-auto max-w-435 overflow-hidden rounded-[40px] bg-[#ff7b33] px-6 py-20 pb-36 sm:px-12 lg:rounded-[100px] lg:px-20 lg:py-0"
+      className="relative isolate mx-auto max-w-435 overflow-hidden rounded-[40px] bg-[#ff7b33] py-20 pb-36 lg:rounded-[100px] lg:py-0"
     >
       <div
         aria-hidden="true"
@@ -23,7 +23,7 @@ export function KairoLanguagesSection() {
         <div className="absolute top-[-9.5%] left-[33.3%] aspect-1220/1282 w-[70.1%] bg-[url('/landing-page/languages/glow-right.svg')] bg-contain bg-no-repeat mix-blend-screen" />
         <div className="absolute top-[30.7%] left-[-13.7%] aspect-square w-[44.7%] bg-[url('/landing-page/languages/glow-left.svg')] bg-contain bg-no-repeat mix-blend-screen" />
       </div>
-      <div className="mx-auto grid max-w-244 items-center gap-12 lg:min-h-269 lg:grid-cols-[minmax(0,512fr)_minmax(0,260fr)] lg:gap-24 xl:gap-50">
+      <div className="container mx-auto grid px-4 items-center gap-12 lg:min-h-269 lg:grid-cols-[minmax(0,512fr)_minmax(0,260fr)] lg:gap-24 xl:gap-50">
         <Reveal animation="left">
           <h2
             id="kairo-languages-heading"

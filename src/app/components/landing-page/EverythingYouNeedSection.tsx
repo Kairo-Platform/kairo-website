@@ -635,7 +635,7 @@ export function EverythingYouNeedSection() {
       className="bg-[#fffcfa] pt-20 pb-24 lg:pt-27 lg:pb-40"
       aria-labelledby="everything-you-need-heading"
     >
-      <div className="mx-auto w-[calc(100%-48px)] max-w-345.5">
+      <div className="container mx-auto px-4">
         <Reveal className="mb-12 lg:mb-22.25">
           <p className="mb-3.25 text-lg leading-7 font-medium tracking-[-0.03em] text-orange max-md:text-center">
             No app, No stress

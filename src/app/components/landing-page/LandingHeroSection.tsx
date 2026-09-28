@@ -22,7 +22,7 @@ export function LandingHeroSection() {
         aria-hidden="true"
       />
       <div className="relative w-full overflow-hidden mb-[6%]">
-        <div className="relative mx-auto grid min-h-[clamp(640px,42.48vw,734px)] w-[calc(100%-48px)] max-w-170 grid-cols-1 lg:w-[80.44%] lg:max-w-347.5 lg:grid-cols-[680fr_710fr]">
+        <div className="relative container mx-auto grid min-h-[clamp(640px,42.48vw,734px)] grid-cols-1 px-4 lg:grid-cols-[680fr_710fr]">
           <div className="z-10 pt-12 min-[480px]:pt-16 lg:pt-[clamp(120px,11.63vw,201px)] lg:pb-25 flex flex-col max-lg:items-center max-lg:text-center">
             <Reveal animation="bottom">
               <h1
