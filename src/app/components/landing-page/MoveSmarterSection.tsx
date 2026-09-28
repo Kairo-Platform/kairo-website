@@ -2,10 +2,11 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { Reveal } from "@/app/components";
 import { businessMailto } from "@/app/constants/contact";
+import Link from "next/link";
 
 export function MoveSmarterSection() {
   return (
-    <section className="relative overflow-hidden pt-14 lg:pt-20 px-4 xl:px-0">
+    <section className="relative overflow-hidden pt-14 lg:pt-20 px-4 xl:px-0 bg-orange-02">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-[url('/kairo-assets/kairo-logo-icon-large.webp')] bg-size-[auto_100%] bg-right bg-no-repeat opacity-90"
@@ -15,27 +16,28 @@ export function MoveSmarterSection() {
           animation="left"
           className="flex w-full max-w-xl flex-col items-start max-lg:items-center max-lg:text-balance max-lg:text-center lg:w-1/2"
         >
-          <h2 className="text-balance text-3xl font-medium leading-snug sm:text-4xl lg:text-5xl">
+          <h2 className="text-balance text-white text-3xl font-medium leading-snug sm:text-4xl lg:text-5xl">
             Move smarter.
             <br />
             Spend better.
             <br />
             Plan ahead.
           </h2>
-          <p className="mt-6 max-w-2xl text-pretty text-lg font-medium leading-relaxed text-secondary lg:max-w-120">
+          <p className="mt-6 max-w-2xl text-pretty text-lg font-medium leading-relaxed text-[#F5F5F5] lg:max-w-120">
             Join other individuals across Africa who stay ready and stay in
             control of their money on Kairo. Free to start.
           </p>
-          <a
+          <Link
             href={businessMailto("Start on WhatsApp with Kairo")}
-            className="cta-button mt-8"
+            className="cta-button-black mt-8"
           >
-            Start on WhatsApp
+            <Icon icon="ic:outline-whatsapp" width={16} height={16} />
+            Start chatting
             <Icon
               icon="material-symbols:chevron-right-rounded"
               aria-hidden="true"
             />
-          </a>
+          </Link>
         </Reveal>
 
         <Reveal

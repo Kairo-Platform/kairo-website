@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   BuiltForHowYouLiveSection,
   EverythingYouNeedSection,
+  FaqSection,
   KairoLanguagesSection,
   LandingHeroSection,
   MoveSmarterSection,
@@ -20,6 +21,7 @@ export default function HomePage() {
       <EverythingYouNeedSection />
       <KairoLanguagesSection />
       <BuiltForHowYouLiveSection />
+      <FaqSection />
       <MoveSmarterSection />
     </main>
   );

@@ -3,525 +3,675 @@
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import { Reveal } from "@/app/components";
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { businessMailto } from "@/app/constants/contact";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 
 const ASSET = "/landing-page/everything-you-need";
-
-function CheckMark({ className = "" }: { className?: string }) {
-  return (
-    // eslint-disable-next-line @next/next/no-img-element -- local SVG icon
-    <img
-      src={`${ASSET}/check-mark.svg`}
-      alt=""
-      width={16}
-      height={16}
-      className={`inline-block size-4 shrink-0 ${className}`}
-      aria-hidden
-    />
-  );
-}
-
-function ChatBubble({
-  align,
-  children,
-  className = "",
-  animationClass = "",
-}: {
-  align: "left" | "right";
-  children: ReactNode;
-  className?: string;
-  animationClass?: string;
-}) {
-  return (
-    <div
-      className={[
-        "eyn-bubble relative max-w-[min(100%,24rem)] rounded-2xl bg-white px-4 py-3 text-[15px] leading-snug tracking-tight text-[#1a1a1a] shadow-[0_4px_24px_rgba(38,16,4,0.08)] sm:text-base sm:leading-[1.4]",
-        align === "right" ? "eyn-bubble--right ml-auto" : "eyn-bubble--left mr-auto",
-        animationClass,
-        className,
-      ].join(" ")}
-    >
-      {children}
-    </div>
-  );
-}
-
-const FEATURE_CARD_LOOP_MS = 7000;
-const FEATURE_CARD_RESTART_GAP_MS = 50;
+const STOREFRONT_INTERVAL_MS = 4500;
 
 function useFeatureCardInView<T extends HTMLElement = HTMLElement>() {
   const ref = useRef<T>(null);
   const [isInView, setIsInView] = useState(false);
-  const intersectingRef = useRef(false);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
-    let loopTimer: ReturnType<typeof setTimeout> | null = null;
-    let restartTimer: ReturnType<typeof setTimeout> | null = null;
-
-    const clearTimers = () => {
-      if (loopTimer) clearTimeout(loopTimer);
-      if (restartTimer) clearTimeout(restartTimer);
-      loopTimer = null;
-      restartTimer = null;
-    };
-
-    const scheduleLoop = () => {
-      clearTimers();
-      loopTimer = setTimeout(() => {
-        if (!intersectingRef.current) return;
-        // Drop the class so CSS animations can reset, then re-apply.
-        setIsInView(false);
-        restartTimer = setTimeout(() => {
-          if (!intersectingRef.current) return;
-          setIsInView(true);
-          scheduleLoop();
-        }, FEATURE_CARD_RESTART_GAP_MS);
-      }, FEATURE_CARD_LOOP_MS);
-    };
-
+    let isIntersecting = false;
+    const update = () => setIsInView(isIntersecting && !document.hidden);
     const observer = new IntersectionObserver(
       ([entry]) => {
-        intersectingRef.current = entry.isIntersecting;
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          scheduleLoop();
-        } else {
-          clearTimers();
-          setIsInView(false);
-        }
+        isIntersecting = entry.isIntersecting;
+        update();
       },
-      { threshold: 0.35, rootMargin: "0px 0px -8% 0px" },
+      // Keep animations active until the entire card leaves the viewport.
+      { threshold: 0, rootMargin: "0px" },
     );
 
     observer.observe(element);
+    document.addEventListener("visibilitychange", update);
     return () => {
-      clearTimers();
       observer.disconnect();
+      document.removeEventListener("visibilitychange", update);
     };
   }, []);
 
   return { ref, isInView };
 }
 
-function FeatureCard({
-  title,
-  subtitle,
+/** Keep illustration layers aligned while the card itself uses fluid layout. */
+function ScaledPreview({
+  width,
+  height,
   children,
-  className = "",
-  stageClassName = "",
 }: {
-  title: ReactNode;
-  subtitle?: ReactNode;
+  width: number;
+  height: number;
   children: ReactNode;
-  className?: string;
-  stageClassName?: string;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setScale(entry.contentRect.width / width);
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [width]);
+
+  return (
+    <div
+      ref={ref}
+      className="relative w-full"
+      style={{ aspectRatio: `${width} / ${height}` }}
+    >
+      <div
+        className="absolute top-0 left-0 origin-top-left"
+        style={{ width, height, transform: `scale(${scale})` }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function SendReceiveCard() {
   const { ref, isInView } = useFeatureCardInView<HTMLElement>();
 
   return (
     <article
       ref={ref}
-      className={`flex h-full min-h-0 flex-col overflow-hidden rounded-3xl bg-gray-02 ${isInView ? "eyn-in-view" : ""} ${className}`}
+      className={`h-max md:h-full md:min-h-116.75 overflow-hidden rounded-3xl bg-[#d9f6f2] bg-[linear-gradient(180deg,#fffcfa5c,#fff3ec5c)] px-6 pt-10 pb-16 sm:px-12.5 sm:pt-13.75 ${isInView ? "eyn-in-view" : ""}`}
     >
-      <header className="relative z-10 shrink-0 px-6 pt-8 sm:px-10 sm:pt-12">
-        <h3 className="text-balance text-2xl font-medium tracking-tight text-black sm:text-[1.875rem] sm:leading-tight">
-          {title}
-        </h3>
-        {subtitle ? (
-          <p className="mt-1.5 text-pretty text-lg font-medium leading-snug tracking-tight text-secondary sm:text-2xl sm:leading-8">
-            {subtitle}
-          </p>
-        ) : null}
-      </header>
-      <div
-        className={`relative mt-6 flex min-h-64 flex-1 flex-col justify-end overflow-hidden px-4 pb-6 sm:mt-8 sm:min-h-72 sm:px-8 sm:pb-8 ${stageClassName}`}
-      >
-        {children}
+      <h3 className="text-2xl font-medium text-[#1a1a1a] sm:text-3xl">
+        Send &amp; receive money
+      </h3>
+      <p className="mt-1.5 max-w-86.25 text-lg leading-7 font-medium tracking-[-0.03em] text-text-04 sm:text-xl sm:leading-7.5">
+        Transfer to anyone — by name, number, or account.
+      </p>
+      <div className="mt-14.75 flex flex-col gap-6 text-[15px] leading-6 tracking-[-0.01em] text-[#1a1a1a]">
+        <div className="eyn-chat-request ml-auto w-fit max-w-full rounded-t-xl rounded-bl-xl bg-white px-3 py-2.5 shadow-[0_4px_46.6px_-20px_#2610041a]">
+          Send ₦25,000 to David.
+        </div>
+        <div className="eyn-chat-response mr-auto max-w-74 rounded-t-xl rounded-br-xl bg-white px-4.75 py-2.75 shadow-[0_4px_46.6px_-20px_#2610041a]">
+          <Icon
+            icon="fluent-emoji-flat:check-mark-button"
+            className="mr-1 inline-block size-3.75 align-text-bottom"
+            aria-hidden
+          />
+          Transfer of ₦25,000 to David Johnson Olanrewaju (0430******238) GTBank
+          was successful.
+        </div>
       </div>
     </article>
   );
 }
 
-function SendReceiveCard() {
-  return (
-    <FeatureCard
-      title="Send & receive money"
-      subtitle="Transfer to anyone — by name, number, or account."
-      className="lg:min-h-[37rem]"
-      stageClassName="gap-4"
-    >
-      <ChatBubble align="right" animationClass="eyn-anim-send-request">
-        Send ₦25,000 to David.
-      </ChatBubble>
-
-      <ChatBubble align="left" animationClass="eyn-anim-send-success" className="max-w-[min(100%,26rem)]">
-        <p>
-          <CheckMark className="mr-1.5 translate-y-0.5" />
-          Transfer of <strong>₦25,000</strong> to{" "}
-          <strong>David Johnson Olanrewaju</strong> (
-          <span className="underline decoration-from-font">0430******238</span>){" "}
-          <strong>GTBank</strong> was successful.
-        </p>
-      </ChatBubble>
-
-      <div className="pointer-events-none relative mx-auto mt-2 w-full max-w-xs sm:max-w-sm" aria-hidden>
-        <Image
-          src={`${ASSET}/send-phone-top.webp`}
-          alt=""
-          width={954}
-          height={280}
-          className="h-auto w-full object-contain object-bottom"
-          sizes="(max-width: 768px) 80vw, 320px"
-        />
-      </div>
-      <span className="sr-only">
-        Phone preview showing the Kairo chat conversation header.
-      </span>
-    </FeatureCard>
-  );
-}
-
 function PayBillsCard() {
+  const { ref, isInView } = useFeatureCardInView<HTMLElement>();
+
   return (
-    <FeatureCard
-      title="Pay bills instantly"
-      subtitle="Take a photo of any account slip or invoice."
-      className="lg:min-h-[37rem]"
-      stageClassName="gap-4"
+    <article
+      ref={ref}
+      className={`flex h-max md:h-full md:min-h-154 flex-col overflow-hidden rounded-3xl bg-[#ddf5da] bg-[linear-gradient(180deg,#fffcfa5c,#fff3ec5c)] px-6 pt-10 pb-16 sm:px-13 sm:pt-13.25 ${isInView ? "eyn-in-view" : ""}`}
     >
-      <ChatBubble align="right" animationClass="eyn-anim-bill-request" className="w-full max-w-md p-3 sm:p-4">
-        <figure className="space-y-3">
+      <header>
+        <h3 className="text-2xl font-medium text-[#1a1a1a] sm:text-3xl">
+          Pay bills instantly
+        </h3>
+        <p className="mt-2 max-w-105.5 text-lg leading-7 font-medium tracking-[-0.03em] text-secondary sm:text-xl sm:leading-7.5">
+          Stay on top of your payments and never miss a due date.
+        </p>
+      </header>
+      <div className="mt-7 flex flex-1 flex-col gap-7">
+        <figure className="eyn-chat-request ml-auto w-full max-w-99.5 rounded-t-xl rounded-bl-xl bg-white px-5 py-1.5 shadow-[0_4px_46.6px_-20px_#2610041a]">
           <Image
             src={`${ASSET}/bill-slip.webp`}
             alt="Ikeja Electric bill showing meter number 4728 2929 and total due of ₦15,000.00"
             width={710}
             height={370}
-            className="h-auto w-full rounded-xl object-cover"
-            sizes="(max-width: 768px) 85vw, 360px"
+            className="h-auto w-full"
+            sizes="(max-width: 767px) 80vw, 355px"
           />
-          <figcaption className="px-1 text-[15px] sm:text-base">Pay my bill</figcaption>
+          <figcaption className="px-2 py-1 text-lg leading-7.5 font-medium tracking-[-0.03em] text-[#1a1a1a] sm:text-xl">
+            Pay my bill
+          </figcaption>
         </figure>
-      </ChatBubble>
-
-      <ChatBubble align="left" animationClass="eyn-anim-bill-success">
-        <p>
-          <span aria-hidden>🎉 </span>
-          Your bill payment was successful.
-        </p>
-        <p className="mt-0.5">
-          Token: <strong>4929 2847 9283 7272</strong>
-        </p>
-      </ChatBubble>
-    </FeatureCard>
+        <div className="eyn-chat-response mr-auto max-w-84.25 rounded-t-xl rounded-br-xl bg-white px-6 py-4 text-base leading-6.5 font-medium tracking-[-0.03em] text-[#1a1a1a] shadow-[0_4px_46.6px_-20px_#2610041a] sm:-ml-3.75 sm:text-lg">
+          <p>
+            <span aria-hidden>🎉 </span>Your bill payment was successful.
+          </p>
+          <p>
+            Token: <strong>4929 2847 9283 7272</strong>
+          </p>
+        </div>
+      </div>
+    </article>
   );
 }
 
-function ReceivePaymentsCard() {
-  return (
-    <FeatureCard
-      title={
-        <>
-          Receive payments, pay
-          <br className="hidden sm:block" /> suppliers,
-        </>
-      }
-      subtitle="track every transaction."
-      className="lg:min-h-[32rem]"
-      stageClassName="justify-center gap-5 sm:justify-end"
-    >
-      <ChatBubble align="left" animationClass="eyn-anim-receive-pulse" className="z-10">
-        <p>
-          <CheckMark className="mr-1.5 translate-y-0.5" />
-          <strong>₦180,000</strong> received from Blessing
-        </p>
-      </ChatBubble>
+const notifications = [
+  {
+    name: "Adeola",
+    amount: "16,000",
+    layer: "back",
+    className: "top-12.5 left-7 w-77 rotate-[0.75deg] blur-[0.5px]",
+    surface: "h-18.25 bg-text-03",
+    opacity: 0.57,
+  },
+  {
+    name: "Ibrahim",
+    amount: "30,000",
+    layer: "middle",
+    className: "top-6 left-3.5 w-84 -rotate-[1.86deg]",
+    surface: "h-19.75 bg-[#cbcbcb]",
+    opacity: 0.99,
+  },
+  {
+    name: "Chiamaka",
+    amount: "30,000",
+    layer: "front",
+    className: "top-0 left-0 w-91",
+    surface: "h-21.25 border border-[#e6e6e6] bg-[#f4f4f4]",
+    opacity: 1,
+  },
+] as const;
 
-      <div
-        className="eyn-anim-tx-shake relative z-0 ml-auto w-full max-w-xs rounded-xl bg-white px-6 py-4 shadow-[0_4px_50px_-27px_rgba(38,16,4,0.12)] sm:max-w-[21rem]"
-        role="img"
-        aria-label="Transactions list showing three successful transfers"
-      >
-        <p className="text-[15px] font-medium tracking-tight text-[#0a0a0a]">
-          Transactions
+function ReceivePaymentsCard() {
+  const { ref, isInView } = useFeatureCardInView<HTMLElement>();
+  const transactions = [
+    { name: "Chiamaka Ike", amount: "30,000" },
+    { name: "Ibrahim Musa", amount: "40,000" },
+    { name: "Adeola Ore", amount: "16,000" },
+  ];
+
+  return (
+    <article
+      ref={ref}
+      className={`flex h-max md:h-full md:min-h-116.75 flex-col overflow-hidden rounded-3xl bg-[#ffeee4] bg-[linear-gradient(180deg,#fffcfa5c,#fff3ec5c)] ${isInView ? "eyn-in-view" : ""}`}
+    >
+      <header className="px-6 pt-10 sm:px-12 sm:pt-13.5">
+        <h3 className="text-2xl font-medium text-[#1a1a1a] sm:text-3xl">
+          Receive payments, track every transaction
+        </h3>
+        <p className="mt-2 max-w-157 text-lg leading-7 font-medium tracking-[-0.03em] text-text-04 sm:text-xl sm:leading-7.5">
+          Receive payments across channels without the manual work.
+          <br className="hidden xl:block" /> Monitor transactions in real time
+          and keep your business moving.
         </p>
-        <ul className="mt-3 space-y-3">
-          {[0, 1, 2].map((i) => (
-            <li key={i} className="flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element -- local SVG icon */}
-              <img
-                src={`${ASSET}/switch-icon.svg`}
-                alt=""
-                width={20}
-                height={20}
-                className="size-5 shrink-0"
-                aria-hidden
-              />
-              <span className="h-[18px] w-28 rounded-sm bg-[#f1f1f1]" aria-hidden />
-              <span className="ml-auto rounded-full border border-[#ddf5da] bg-green-light px-3 py-0.5 text-[13px] font-medium tracking-tight text-green">
-                Successful
-              </span>
-            </li>
-          ))}
-        </ul>
+      </header>
+      <div className="relative mt-8.75 flex-1 overflow-hidden">
+        <div className="hidden sm:block">
+          <ScaledPreview width={926} height={274}>
+            <div className="absolute top-0 left-12 h-89.5 w-122 overflow-hidden rounded-[72px] border-2 border-[#848484] bg-[#1a1a1a] bg-[linear-gradient(179deg,#0003_7%,#6663_80%)]">
+              <div className="absolute top-5.25 left-45.75 h-9 w-35.25 rounded-full bg-black/50" />
+              <div className="absolute top-25.25 left-15 h-34.5 w-91">
+                {notifications.map((notification) => (
+                  <div
+                    key={notification.name}
+                    className={`absolute ${notification.className} rounded-2xl`}
+                  >
+                    <div
+                      className={`eyn-notification eyn-notification-${notification.layer} ${notification.surface} flex items-center gap-5.5 overflow-hidden rounded-2xl px-4 shadow-[0_4px_46.6px_-20px_#2610041a]`}
+                      style={
+                        {
+                          "--notification-opacity": notification.opacity,
+                        } as CSSProperties
+                      }
+                    >
+                      <Image
+                        src={`${ASSET}/payment-app-icon.webp`}
+                        alt=""
+                        width={48}
+                        height={48}
+                        className="shrink-0 rounded-lg border border-[#f1f1f1]"
+                      />
+                      <div className="min-w-0 leading-5 tracking-[-0.015em]">
+                        <p className="text-[15px] font-bold text-[#1a1a1a]">
+                          Payment received
+                        </p>
+                        <p className="whitespace-nowrap text-xs text-text-02">
+                          {notification.name} paid for Ankara set x2 NGN
+                          {notification.amount}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="absolute top-1.75 left-147.25 w-71">
+              <p className="mb-5 text-[13px] leading-5 tracking-[-0.01em] text-black">
+                Transactions
+              </p>
+              <div className="eyn-transactions rounded-xl border border-[#f1f1f1] bg-white p-4 shadow-[0_8px_31.1px_#26100412]">
+                <table className="w-full text-left text-[11px] leading-5 tracking-[-0.01em] text-text-04">
+                  <caption className="sr-only">
+                    Recent successful payments
+                  </caption>
+                  <thead className="border-b border-[#f1f1f1] text-xs text-black">
+                    <tr>
+                      <th className="pb-1 font-medium">Customer</th>
+                      <th className="pb-1 font-medium">Amount</th>
+                      <th className="pb-1 font-medium">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {transactions.map((transaction) => (
+                      <tr
+                        key={transaction.name}
+                        className="border-b border-[#f1f1f1] last:border-0"
+                      >
+                        <td className="py-2 whitespace-nowrap">
+                          {transaction.name}
+                        </td>
+                        <td className="py-2">NGN{transaction.amount}</td>
+                        <td className="py-2">
+                          <span className="rounded-full border border-[#ddf5da] bg-green-light px-3 py-0.5 text-xs text-green">
+                            Successful
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </ScaledPreview>
+        </div>
+        <div className="px-6 pb-8 sm:hidden">
+          <div className="relative h-64 overflow-hidden rounded-t-[48px] border-2 border-[#848484] bg-[#202020]">
+            <div className="mx-auto mt-5 h-6 w-24 rounded-full bg-black/50" />
+            <div className="relative mx-auto mt-9 w-[88%]">
+              {notifications.map((notification, index) => (
+                <div
+                  key={notification.name}
+                  className="absolute inset-x-0"
+                  style={{
+                    top: (2 - index) * 20,
+                    transform: `scale(${0.86 + index * 0.07})`,
+                  }}
+                >
+                  <div
+                    className={`eyn-notification eyn-notification-${notification.layer} flex items-center gap-3 rounded-2xl bg-[#f4f4f4] p-3 shadow-lg`}
+                    style={
+                      {
+                        "--notification-opacity": notification.opacity,
+                      } as CSSProperties
+                    }
+                  >
+                    <Image
+                      src={`${ASSET}/payment-app-icon.webp`}
+                      alt=""
+                      width={36}
+                      height={36}
+                      className="rounded-lg"
+                    />
+                    <div>
+                      <p className="text-xs font-bold">Payment received</p>
+                      <p className="text-[10px]">
+                        {notification.name} paid NGN{notification.amount}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="eyn-transactions relative -mt-5 rounded-xl bg-white p-4 shadow-lg">
+            <p className="mb-2 text-sm font-medium">Transactions</p>
+            <ul className="space-y-3 text-xs">
+              {transactions.map((transaction) => (
+                <li
+                  key={transaction.name}
+                  className="flex justify-between gap-2"
+                >
+                  <span>{transaction.name}</span>
+                  <span>NGN{transaction.amount}</span>
+                  <span className="text-green">Successful</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
-    </FeatureCard>
+    </article>
   );
 }
 
 function InvoiceCard() {
-  const rows = [
-    { item: "Spices ebook", qty: "1", unit: "5000", total: "5000" },
-    { item: "Health guide ebook", qty: "1", unit: "5000", total: "5000" },
-    { item: "Health guide ebook", qty: "1", unit: "5000", total: "5000" },
-    { item: "Health guide ebook", qty: "1", unit: "5000", total: "5000" },
-  ] as const;
-
+  const { ref, isInView } = useFeatureCardInView<HTMLElement>();
   return (
-    <FeatureCard
-      title="Create a professional invoice in 30 seconds"
-      subtitle="and get paid."
-      className="lg:min-h-[32rem]"
-      stageClassName="items-center justify-center"
+    <article
+      ref={ref}
+      className={`flex h-max md:h-full md:min-h-145.75 flex-col overflow-hidden rounded-3xl bg-[#f4e9ff] bg-[linear-gradient(180deg,#fffcfa5c,#fff3ec5c)] ${isInView ? "eyn-in-view" : ""}`}
     >
-      <div className="relative w-full max-w-[22rem]">
-        <div className="overflow-hidden rounded-lg bg-white shadow-[0_4px_50px_-27px_rgba(38,16,4,0.12)]">
-          <div className="flex items-start justify-between px-5 pt-5">
-            <Icon icon="mdi:star" className="size-5 text-black" aria-hidden />
-            <p className="text-sm font-bold tracking-wide text-black">INVOICE</p>
-          </div>
-          <div className="mt-6 space-y-1 px-5 text-[11px] leading-relaxed text-black sm:text-xs">
-            <p className="font-bold">Billed to</p>
-            <p>Kehinde Femi Enterprise</p>
-            <p className="break-all">kehindefemienterprise@gmail.com</p>
-            <p>Anywhere, Phase 3 junction, Lagos</p>
-          </div>
-          <div className="mt-5 overflow-x-auto px-3 pb-6 sm:px-5">
-            <table className="w-full min-w-[16rem] border-collapse text-left text-[9px] text-black sm:text-[10px]">
-              <caption className="sr-only">
-                Sample invoice line items totaling 20,000 Naira
-              </caption>
-              <thead>
-                <tr className="border-b border-black">
-                  <th scope="col" className="py-1.5 font-medium">
-                    Item
-                  </th>
-                  <th scope="col" className="border-l border-black px-1.5 py-1.5 font-medium">
-                    Quantity
-                  </th>
-                  <th scope="col" className="border-l border-black px-1.5 py-1.5 font-medium">
-                    Unit price (NGN)
-                  </th>
-                  <th scope="col" className="border-l border-black px-1.5 py-1.5 font-medium">
-                    Total (NGN)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((row, i) => (
-                  <tr key={i} className="border-b border-black/40">
-                    <td className="py-1.5">{row.item}</td>
-                    <td className="border-l border-black/40 px-1.5 py-1.5">{row.qty}</td>
-                    <td className="border-l border-black/40 px-1.5 py-1.5">{row.unit}</td>
-                    <td className="border-l border-black/40 px-1.5 py-1.5">{row.total}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div
-          className="eyn-anim-paid-toast eyn-bubble eyn-bubble--left absolute -right-1 top-[42%] z-10 flex items-center gap-3 rounded-2xl bg-white px-3 py-2.5 shadow-[0_4px_24px_rgba(38,16,4,0.1)] sm:-right-4"
-          role="status"
-        >
-          <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-green">
-            <Icon
-              icon="eva:checkmark-outline"
-              className="size-5 text-white"
-              aria-hidden
-            />
-          </span>
-          <div className="min-w-0 leading-tight">
-            <p className="text-[15px] font-bold tracking-tight text-black">Paid 20k</p>
-            <p className="truncate text-[13px] tracking-tight text-black/80">
-              Adeola Emmanuel
-            </p>
-          </div>
-        </div>
+      <header className="px-6 pt-10 sm:px-11 sm:pt-14.25">
+        <h3 className="max-w-100.75 text-2xl leading-[1.1]! font-medium text-[#1a1a1a] sm:text-3xl">
+          Create a professional invoice in 30 seconds
+        </h3>
+        <p className="mt-2 max-w-100.75 text-lg leading-7 font-medium tracking-[-0.03em] text-secondary sm:text-xl sm:leading-7.5">
+          Get paid faster with simple invoices that make it easy for customers
+          to pay.
+        </p>
+      </header>
+      <div className="eyn-invoice-preview mx-auto mt-9.75 w-[75.68%] max-w-97.25">
+        <Image
+          src={`${ASSET}/invoice-preview.svg`}
+          alt="Professional invoice for Kehinde Femi Enterprise with four ebook line items and a subtotal of NGN20,000"
+          width={389}
+          height={353}
+          className="h-auto w-full"
+          sizes="(max-width: 767px) 75vw, 389px"
+        />
       </div>
-    </FeatureCard>
+    </article>
   );
 }
+
+const storefrontTemplates = [
+  {
+    name: "Author",
+    file: "templates/author-website.webp",
+    width: 1440,
+    height: 1059,
+  },
+  {
+    name: "Fashion",
+    file: "templates/fashion-thumb.webp",
+    width: 1288,
+    height: 4096,
+  },
+  {
+    name: "Real estate",
+    file: "templates/real-estate-thumb.webp",
+    width: 1440,
+    height: 3493,
+  },
+  {
+    name: "Groceries",
+    file: "templates/groceries-thumb.webp",
+    width: 1440,
+    height: 3417,
+  },
+  {
+    name: "Confectionery",
+    file: "templates/confectionary-thumb.webp",
+    width: 1240,
+    height: 4096,
+  },
+] as const;
+
+// Figma's five depth positions, relative to the 714px illustration canvas.
+const storefrontSlots = [
+  { x: 0, y: 44, width: 117, height: 187, opacity: 0.79, blur: 1.5, zIndex: 1 },
+  { x: 93, y: 34, width: 144, height: 219, opacity: 0.74, blur: 1, zIndex: 2 },
+  { x: 209, y: 0, width: 296, height: 288, opacity: 1, blur: 0, zIndex: 3 },
+  { x: 468, y: 20, width: 144, height: 219, opacity: 0.74, blur: 1, zIndex: 2 },
+  {
+    x: 597,
+    y: 44,
+    width: 117,
+    height: 187,
+    opacity: 0.78,
+    blur: 1.5,
+    zIndex: 1,
+  },
+] as const;
 
 function StorefrontCard() {
-  return (
-    <FeatureCard
-      title={
-        <>
-          Storefront for your
-          <br /> business
-        </>
+  const { ref, isInView } = useFeatureCardInView<HTMLElement>();
+  const [activeIndex, setActiveIndex] = useState(2);
+
+  useEffect(() => {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: ReturnType<typeof setInterval> | undefined;
+    const update = () => {
+      clearInterval(timer);
+      if (isInView && !media.matches) {
+        timer = setInterval(
+          () =>
+            setActiveIndex(
+              (current) => (current + 1) % storefrontTemplates.length,
+            ),
+          STOREFRONT_INTERVAL_MS,
+        );
       }
-      subtitle="and sub-domain"
-      className="lg:min-h-[32rem]"
-      stageClassName="items-center justify-center px-2"
+    };
+    update();
+    media.addEventListener("change", update);
+    return () => {
+      clearInterval(timer);
+      media.removeEventListener("change", update);
+    };
+  }, [isInView]);
+
+  return (
+    <article
+      ref={ref}
+      className="flex h-max md:h-full md:min-h-145.5 flex-col overflow-hidden rounded-3xl bg-[#ffebc2] bg-[linear-gradient(180deg,#fffcfa5c,#fff3ec5c)]"
     >
+      <header className="px-6 pt-10 sm:px-13 sm:pt-14.5">
+        <h3 className="text-2xl font-medium text-[#1a1a1a] sm:text-3xl">
+          Storefront for your business and sub-domain
+        </h3>
+        <p className="mt-2 max-w-153.5 text-lg leading-7 font-medium tracking-[-0.03em] text-secondary sm:text-xl sm:leading-7.5">
+          Showcase what you offer, make it easy to order, and grow your business
+          online.
+        </p>
+      </header>
       <div
-        className="relative mx-auto w-full max-w-lg"
-        style={{ aspectRatio: "623 / 300" }}
-        role="img"
-        aria-label="Stacked storefront previews: fashion and grocery sites blurred behind a sharp Skyline Real Estate site"
+        className="mx-auto mt-13.25 w-[85%] max-w-178.5"
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Storefront templates"
       >
-        {/* Left — Fashion (blurred, behind) */}
-        <div
-          aria-hidden
-          className="absolute top-[12%] left-[7.7%] z-0 h-[73%] w-[23.1%] overflow-hidden bg-white opacity-70 shadow-[0_4px_12px_6px_rgba(0,0,0,0.07)] blur-[1.75px]"
-        >
-          <Image
-            src={`${ASSET}/storefront-fashion.webp`}
-            alt=""
-            width={204}
-            height={438}
-            className="h-full w-full scale-110 object-cover object-left-top"
-            sizes="120px"
-          />
-        </div>
-
-        {/* Right — Groceries (blurred, behind) */}
-        <div
-          aria-hidden
-          className="absolute top-[8%] right-[9%] z-0 h-[73%] w-[23.1%] overflow-hidden bg-white opacity-70 shadow-[0_4px_12px_6px_rgba(0,0,0,0.07)] blur-[1.75px]"
-        >
-          <Image
-            src={`${ASSET}/storefront-groceries.webp`}
-            alt=""
-            width={206}
-            height={438}
-            className="h-full w-full scale-110 object-cover object-right-top"
-            sizes="120px"
-          />
-        </div>
-
-        {/* Center — Real estate (sharp, on top) */}
-        <div className="absolute top-0 left-[24%] z-10 h-full w-[50.4%] overflow-hidden bg-white shadow-[0_4px_14px_6px_rgba(0,0,0,0.13)]">
-          <Image
-            src={`${ASSET}/storefront-real-estate.webp`}
-            alt="Skyline Real Estate storefront with hero listing and featured properties"
-            width={628}
-            height={586}
-            className="h-full w-full object-cover object-top"
-            sizes="(max-width: 768px) 50vw, 280px"
-          />
-        </div>
+        <ScaledPreview width={714} height={288}>
+          {storefrontTemplates.map((template, index) => {
+            const slot = storefrontSlots[(index - activeIndex + 7) % 5];
+            return (
+              <div
+                key={template.name}
+                className="absolute top-0 left-0 overflow-hidden bg-white shadow-[0_4px_14px_6px_#00000021] transition-[transform,width,height,opacity,filter] duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+                style={{
+                  transform: `translate(${slot.x}px, ${slot.y}px)`,
+                  width: slot.width,
+                  height: slot.height,
+                  opacity: slot.opacity,
+                  filter: `blur(${slot.blur}px)`,
+                  zIndex: slot.zIndex,
+                }}
+              >
+                <Image
+                  src={`${ASSET}/${template.file}`}
+                  alt={`${template.name} storefront template`}
+                  width={template.width}
+                  height={template.height}
+                  className="h-full w-full object-cover object-top"
+                  sizes="296px"
+                />
+              </div>
+            );
+          })}
+        </ScaledPreview>
       </div>
-    </FeatureCard>
+    </article>
   );
 }
 
-function PromotionsCard() {
-  const customers = [
-    { name: "Ademola Bankole", delay: "eyn-anim-check-1" },
-    { name: "Chidinma Joy", delay: "eyn-anim-check-2" },
-    { name: "Musa Isa", delay: "eyn-anim-check-3" },
-  ] as const;
+function PromotionsPreview() {
+  const customers = ["Ademola Bankole", "Chidinma Joy", "Musa Isa"];
+  const checkAnimations = [
+    "eyn-anim-check-1",
+    "eyn-anim-check-2",
+    "eyn-anim-check-3",
+  ];
 
   return (
-    <FeatureCard
-      title="Send promotions to your customer list in one message"
-      className="lg:min-h-[32rem]"
-      stageClassName="gap-5 justify-center"
-    >
-      <ChatBubble
-        align="right"
-        animationClass="eyn-anim-promo-drop"
-        className="max-w-[min(100%,24rem)]"
-      >
-        <p>Send this message to my customers</p>
-        <p className="mt-1 font-bold">Thursday Special!!!</p>
-        <p className="font-bold">
-          Buy 2 plates, get 1 free — today only. Order now!
-        </p>
-      </ChatBubble>
-
-      <div className="w-full max-w-sm rounded-xl bg-white px-6 py-4 shadow-[0_4px_50px_-27px_rgba(38,16,4,0.12)]">
-        <p className="text-[13px] font-medium tracking-tight text-secondary">
-          Customers
-        </p>
-        <ul className="mt-3 space-y-3">
-          {customers.map((customer) => (
-            <li
-              key={customer.name}
-              className="flex items-center justify-between gap-3"
-            >
-              <span className="flex min-w-0 items-center gap-1">
-                <Icon
-                  icon="mingcute:user-4-fill"
-                  className="size-4 shrink-0 text-secondary"
-                  aria-hidden
+    <ScaledPreview width={691} height={390}>
+      <div className="absolute -top-48.75 left-25.25 h-134 w-122 overflow-hidden rounded-[72px] border-2 border-[#848484] bg-[#1a1a1a] bg-[linear-gradient(178.45deg,#0003_7%,#6663_80%)]">
+        <div className="eyn-chat-request absolute top-58.5 left-51.5 w-60.75 rounded-t-xl rounded-bl-xl bg-[#005d3b] px-3 py-2.5 text-[13px] leading-4.5 tracking-[-0.01em] text-white">
+          <p>Send this message to my customers</p>
+          <p>Thursday Special!!!</p>
+          <p>Buy 2 plates, get 1 free — today only. Order now!</p>
+        </div>
+        <div className="eyn-chat-response absolute top-85.75 left-6 flex items-end gap-1.5">
+          <Image
+            src={`${ASSET}/promo-avatar.webp`}
+            alt="Kairo"
+            width={34}
+            height={34}
+            className="rounded-full"
+          />
+          <p className="w-66.25 rounded-t-xl rounded-br-xl bg-text-02 px-4.75 py-2.75 text-[13px] leading-4.5 tracking-[-0.01em] text-white">
+            Sure, Promotion message successfully sent to all your customers.
+          </p>
+        </div>
+        <Image
+          src={`${ASSET}/promo-toolbar.svg`}
+          alt=""
+          width={491}
+          height={88.1182}
+          className="absolute top-111.5 -left-1.25"
+        />
+        <Image
+          src={`${ASSET}/promo-input.svg`}
+          alt=""
+          width={319}
+          height={33}
+          className="absolute top-113.75 left-15.25"
+        />
+        <Image
+          src={`${ASSET}/promo-plus.svg`}
+          alt=""
+          width={16.7648}
+          height={16.7675}
+          className="absolute top-115.75 left-7.75"
+        />
+        <Image
+          src={`${ASSET}/promo-camera.svg`}
+          alt=""
+          width={19.8293}
+          height={17.1281}
+          className="absolute top-[463.606px] left-[399.668px]"
+        />
+        <Image
+          src={`${ASSET}/promo-microphone.svg`}
+          alt=""
+          width={14.1509}
+          height={20.8241}
+          className="absolute top-[462.818px] left-[434.488px]"
+        />
+        <Image
+          src={`${ASSET}/promo-home.svg`}
+          alt=""
+          width={120.779}
+          height={4.50739}
+          className="absolute top-[514.03px] left-[184.061px]"
+        />
+      </div>
+      <div className="absolute top-62.25 left-103.25 w-59 rounded-xl bg-white px-6 pt-4 pb-6 text-[13px] leading-5 tracking-[-0.01em] shadow-[0_4px_46.6px_#2610041a]">
+        <p className="text-secondary">Customers</p>
+        <ul className="mt-2 space-y-2">
+          {customers.map((name, index) => (
+            <li key={name} className="flex items-center justify-between gap-3">
+              <span className="flex items-center gap-1 text-[#1a1a1a]">
+                <Image
+                  src={`${ASSET}/promo-user.svg`}
+                  alt=""
+                  width={16}
+                  height={16}
                 />
-                <span className="truncate text-[15px] font-medium tracking-tight text-black">
-                  {customer.name}
-                </span>
+                {name}
               </span>
-              <span className="flex items-center gap-2">
-                <span className="h-[18px] w-20 rounded-sm bg-[#f1f1f1] sm:w-28" aria-hidden />
-                <Icon
-                  icon="mdi:check"
-                  className={`size-3.5 text-green ${customer.delay}`}
-                  aria-label="Selected"
-                />
-              </span>
+              <Image
+                src={`${ASSET}/promo-check.svg`}
+                alt="Delivered"
+                width={13.5}
+                height={8}
+                className={checkAnimations[index]}
+              />
             </li>
           ))}
         </ul>
       </div>
-    </FeatureCard>
+    </ScaledPreview>
+  );
+}
+
+function PromotionsCard() {
+  const { ref, isInView } = useFeatureCardInView<HTMLElement>();
+
+  return (
+    <article
+      ref={ref}
+      className={`flex h-max md:h-full md:min-h-154 flex-col overflow-hidden rounded-3xl bg-[#c9dcf5] bg-[linear-gradient(180deg,#fffcfa5c,#fff3ec5c)] ${isInView ? "eyn-in-view" : ""}`}
+    >
+      <PromotionsPreview />
+      <header className="px-6 pt-8 pb-13.5 sm:px-13.75">
+        <h3 className="max-w-132.25 text-2xl font-medium text-[#1a1a1a] sm:text-3xl">
+          Send promotions to your customer list in one message
+        </h3>
+        <p className="mt-2 max-w-132.25 text-lg leading-7 font-medium tracking-[-0.03em] text-secondary sm:text-xl sm:leading-7.5">
+          Reach more customers with targeted promotions, all sent at once from
+          your customer list.
+        </p>
+      </header>
+    </article>
   );
 }
 
 export function EverythingYouNeedSection() {
   return (
-    <section className="section-padding" aria-labelledby="everything-you-need-heading">
-      <div className="container mx-auto flex flex-col items-center gap-12 px-4 lg:gap-16">
-        <Reveal className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center gap-6 text-center md:flex-row md:items-center md:justify-between md:gap-8 md:text-left">
+    <section
+      className="bg-[#fffcfa] pt-20 pb-24 lg:pt-27 lg:pb-40"
+      aria-labelledby="everything-you-need-heading"
+    >
+      <div className="mx-auto w-[calc(100%-48px)] max-w-345.5">
+        <Reveal className="mb-12 lg:mb-22.25">
+          <p className="mb-3.25 text-lg leading-7 font-medium tracking-[-0.03em] text-orange max-md:text-center">
+            No app, No stress
+          </p>
           <h2
             id="everything-you-need-heading"
-            className="max-w-xl text-balance text-3xl font-medium leading-snug sm:text-4xl md:max-w-2xl lg:max-w-4xl lg:text-5xl"
+            className="max-w-212.5 text-3xl  max-md:text-center text-pretty leading-tight! font-medium tracking-[-0.02em]! text-[#1a1a1a] sm:text-4xl lg:text-5xl lg:leading-15!"
           >
             Everything you need, all in one place.
           </h2>
-          <a
-            href={businessMailto("Start on WhatsApp with Kairo Personal")}
-            className="cta-button shrink-0"
-          >
-            <Icon icon="ic:baseline-whatsapp" aria-hidden="true" />
-            Start on WhatsApp
-          </a>
         </Reveal>
-
-        <div className="eyn-features grid w-full max-w-6xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-5">
-          <Reveal animation="bottom" className="min-w-0 lg:col-span-6">
-            <SendReceiveCard />
-          </Reveal>
-          <Reveal animation="bottom" className="min-w-0 lg:col-span-6">
-            <PayBillsCard />
-          </Reveal>
-          <Reveal animation="bottom" className="min-w-0 lg:col-span-7">
-            <ReceivePaymentsCard />
-          </Reveal>
-          <Reveal animation="bottom" className="min-w-0 lg:col-span-5">
-            <InvoiceCard />
-          </Reveal>
-          <Reveal animation="bottom" className="min-w-0 lg:col-span-6">
-            <StorefrontCard />
-          </Reveal>
-          <Reveal animation="bottom" className="min-w-0 lg:col-span-6">
-            <PromotionsCard />
-          </Reveal>
+        <div className="eyn-features space-y-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[432fr_926fr]">
+            <Reveal animation="bottom" className="min-w-0">
+              <SendReceiveCard />
+            </Reveal>
+            <Reveal animation="bottom" className="min-w-0">
+              <ReceivePaymentsCard />
+            </Reveal>
+          </div>
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-[842fr_514fr]">
+            <Reveal animation="bottom" className="min-w-0">
+              <StorefrontCard />
+            </Reveal>
+            <Reveal animation="bottom" className="min-w-0">
+              <InvoiceCard />
+            </Reveal>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-[666fr_691fr]">
+            <Reveal animation="bottom" className="min-w-0">
+              <PayBillsCard />
+            </Reveal>
+            <Reveal animation="bottom" className="min-w-0">
+              <PromotionsCard />
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

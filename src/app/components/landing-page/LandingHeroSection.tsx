@@ -1,196 +1,77 @@
-"use client";
-
-import { Icon } from "@iconify/react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
+import { Instrument_Sans } from "next/font/google";
 import { businessMailto } from "@/app/constants/contact";
+import Reveal from "../Reveal";
+import Link from "next/link";
 
-const CYCLE_MS = 10000;
-
-type HeroVariant = "business" | "personal";
-
-function BusinessHeroContent() {
-  return (
-    <div className="relative h-full z-10 container mx-auto flex flex-wrap  justify-center gap-10 px-4 text-start lg:flex-nowrap lg:gap-24 xl:px-0">
-      <div className="flex w-full max-w-xl flex-col items-start max-lg:items-center max-lg:text-balance max-lg:text-center lg:w-1/2">
-        <h1 className="text-balance text-5xl font-medium leading-tight max-sm:text-3xl xl:max-w-lg xl:text-6xl">
-          Collect Payment and <span className="text-accent">Grow</span> your
-          Business
-        </h1>
-        <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-secondary lg:max-w-120">
-          Kairo Business is not an app. It is a business assistant that lives in
-          your chat.
-        </p>
-        <a
-          href={businessMailto("Start on WhatsApp with Kairo Business")}
-          className="cta-button mt-8"
-        >
-          <Icon icon="ic:baseline-whatsapp" aria-hidden="true" />
-          Start on WhatsApp
-        </a>
-      </div>
-
-      <div className="flex w-full max-w-xl items-center justify-center lg:h-full lg:w-1/2 lg:items-end lg:justify-end">
-        <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:h-full lg:max-w-none">
-          <div className="hero-float absolute top-16 -left-16 z-10 max-lg:-left-2 max-lg:w-1/3">
-            <Image
-              src="/business-assets/wallet-balance.webp"
-              alt="Business wallet balance card"
-              width={220}
-              height={180}
-              priority
-              className="hero-float-image h-auto w-[200px] max-lg:w-full"
-            />
-          </div>
-          <div className="hero-float hero-float-delayed absolute -right-12 bottom-10 z-10 max-lg:-right-2 max-lg:w-1/3">
-            <Image
-              src="/business-assets/paid-20k.webp"
-              alt="Payment received notification for 20,000 Naira"
-              width={220}
-              height={180}
-              priority
-              className="hero-float-image h-auto w-[200px] max-lg:w-full"
-            />
-          </div>
-          <Image
-            src="/business-assets/kairo-whatsapp-chat-new.webp"
-            alt="Kairo Business WhatsApp chat showing payment and invoice conversation"
-            width={480}
-            height={720}
-            priority
-            className="relative z-0 mx-auto h-auto w-[85%] max-w-sm object-contain object-center lg:max-w-none"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PersonalHeroContent() {
-  return (
-    <div className="relative h-full z-10 container mx-auto flex flex-wrap justify-center gap-10 px-4 text-start lg:flex-nowrap lg:gap-20 xl:gap-24 xl:px-0">
-      <div className="flex w-full max-w-xl flex-col items-start max-lg:items-center max-lg:text-balance max-lg:text-center lg:w-1/2">
-        <h1 className="text-balance text-5xl font-medium italic leading-tight tracking-normal max-sm:text-3xl xl:text-6xl">
-          Money <span className="text-accent">moves</span> the way you talk
-        </h1>
-        <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-secondary lg:max-w-120">
-          Send money, pay bills, and buy from businesses, all from WhatsApp,
-          your voice, or a quick snap of account details. No app. No learning
-          curve.
-        </p>
-        <a
-          href={businessMailto("Start on WhatsApp with Kairo Personal")}
-          className="cta-button mt-8"
-        >
-          <Icon icon="ic:baseline-whatsapp" aria-hidden="true" />
-          Start on WhatsApp
-        </a>
-      </div>
-
-      <div className="flex w-full max-w-xl items-center justify-center lg:h-full lg:w-1/2 lg:items-end lg:justify-end">
-        <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:h-full lg:max-w-none">
-          <div className="hero-float absolute -top-8 -left-8 z-10 max-lg:-left-2 max-lg:w-1/3">
-            <Image
-              src="/personal-assets/scan-icon.webp"
-              alt="Snap to pay scan icon"
-              width={160}
-              height={150}
-              priority
-              className="hero-float-image h-auto w-[150px] max-lg:w-full"
-            />
-          </div>
-          <div className="hero-float absolute top-1/2 -left-16 z-10 max-lg:-left-2 max-lg:w-1/3">
-            <Image
-              src="/personal-assets/whatsapp-logo-white-bg.webp"
-              alt="WhatsApp logo"
-              width={170}
-              height={150}
-              priority
-              className="hero-float-image h-auto w-[160px] max-lg:w-full"
-            />
-          </div>
-          <div className="hero-float hero-float-delayed absolute -right-12 bottom-6 z-10 max-lg:-right-2 max-lg:w-1/3">
-            <Image
-              src="/personal-assets/sent-20k.webp"
-              alt="Money sent notification for 20,000 Naira"
-              width={200}
-              height={160}
-              priority
-              className="hero-float-image h-auto w-[180px] max-lg:w-full"
-            />
-          </div>
-          <div className="mx-auto h-auto w-[85%] max-w-sm overflow-hidden rounded-bl-[4rem] lg:h-full lg:w-full lg:max-w-none">
-            <Image
-              src="/personal-assets/person-with-phone.webp"
-              alt="Person using Kairo Personal on their phone"
-              width={896}
-              height={1200}
-              priority
-              quality={95}
-              sizes="(max-width: 1024px) 85vw, 40vw"
-              className="h-auto w-full object-contain object-center lg:max-w-none"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  weight: "500",
+  display: "swap",
+});
 
 export function LandingHeroSection() {
-  const [variant, setVariant] = useState<HeroVariant>("business");
-  const [reduceMotion, setReduceMotion] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduceMotion(media.matches);
-
-    const onChange = () => setReduceMotion(media.matches);
-    media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
-  }, []);
-
-  useEffect(() => {
-    if (reduceMotion) return;
-
-    const id = window.setInterval(() => {
-      setVariant((current) =>
-        current === "business" ? "personal" : "business",
-      );
-    }, CYCLE_MS);
-
-    return () => window.clearInterval(id);
-  }, [reduceMotion]);
-
   return (
-    <section className="relative flex min-h-[calc(100dvh-4rem)] justify-center overflow-hidden py-20 max-lg:py-10">
+    <section
+      className="relative flex min-h-[calc(100dvh-4rem)] items-center overflow-hidden bg-[#fffcfa]"
+      aria-labelledby="landing-hero-heading"
+    >
       <div
+        className="pointer-events-none absolute -top-33.5 left-0 h-310.25 w-[max(100%,1862px)] bg-[url('/landing-page/hero/grid.webp')] bg-cover bg-center bg-no-repeat opacity-8 mix-blend-multiply"
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[url('/landing-page/hero-bg.webp')] bg-cover bg-center opacity-25"
       />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-radial from-orange/10 via-orange/5 to-transparent blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-radial from-orange/10 via-orange/5 to-transparent blur-3xl"
-      />
-
-      <div className="relative w-full">
-        <div
-          className={`h-full transition-opacity duration-1000 ease-in-out ${variant === "business" ? "opacity-100" : "pointer-events-none absolute inset-0 opacity-0"
-            }`}
-          aria-hidden={variant !== "business"}
-        >
-          <BusinessHeroContent />
-        </div>
-        <div
-          className={`h-full transition-opacity duration-1000 ease-in-out ${variant === "personal" ? "opacity-100" : "pointer-events-none absolute inset-0 opacity-0"
-            }`}
-          aria-hidden={variant !== "personal"}
-        >
-          <PersonalHeroContent />
+      <div className="relative w-full overflow-hidden mb-[6%]">
+        <div className="relative mx-auto grid min-h-[clamp(640px,42.48vw,734px)] w-[calc(100%-48px)] max-w-170 grid-cols-1 lg:w-[80.44%] lg:max-w-347.5 lg:grid-cols-[680fr_710fr]">
+          <div className="z-10 pt-12 min-[480px]:pt-16 lg:pt-[clamp(120px,11.63vw,201px)] lg:pb-25 flex flex-col max-lg:items-center max-lg:text-center">
+            <Reveal animation="bottom">
+              <h1
+                id="landing-hero-heading"
+                className={`${instrumentSans.className} m-0 max-w-170 text-[38px] leading-[1.207]! font-medium tracking-[-0.04em] text-[#1a1a1a] min-[480px]:text-[clamp(38px,6vw,52px)] lg:text-[clamp(40px,3.357vw,58px)] text-pretty`}
+              >
+                Move money and <span className="text-accent">grow</span> your
+                business, all in one place.
+              </h1>
+            </Reveal>
+            <Reveal animation="bottom" className="delay-150">
+              <p className="mt-4.5 max-w-xl text-base text-pretty leading-6.5 font-medium tracking-[-0.03em] text-secondary min-[480px]:text-lg min-[480px]:leading-7">
+                Send money, pay bills, and buy from businesses, all from
+                WhatsApp, your voice, or a quick snap of account details. No
+                app. No learning curve.
+              </p>
+            </Reveal>
+            <Reveal animation="bottom" className="delay-300">
+              <Link
+                href={businessMailto("Start chatting with Kairo")}
+                className="mt-7 inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-[36px] bg-orange py-3 pr-5 pl-3.5 text-[15px] leading-5 font-medium tracking-[-0.01em] text-white transition-[translate,scale,background-color,box-shadow] duration-300 ease-out hover:bg-orange-dark hover:shadow-lg hover:shadow-orange/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange motion-safe:hover:translate-x-1 motion-safe:hover:-translate-y-1 motion-safe:active:scale-98 motion-reduce:transition-none lg:mt-12.25"
+              >
+                <Icon
+                  icon="ic:outline-whatsapp"
+                  width={20}
+                  height={20}
+                  aria-hidden="true"
+                />
+                <span>Start chatting</span>
+              </Link>
+            </Reveal>
+          </div>
+          <div className="relative mx-auto mt-12 -mb-22.5 aspect-[735.186/857] w-full max-w-150 self-start min-[480px]:-mb-40 lg:mx-0 lg:mt-22.5 lg:-mb-75 lg:w-[calc(100%+25px)] lg:max-w-none">
+            <div
+              className="absolute top-[8.73%] left-[9.47%] h-[76.31%] w-[81.07%] rotate-[-13.85deg] rounded-3xl bg-[#ffe2d2] bg-[linear-gradient(180deg,#fffcfa33,#fff3ec33)]"
+              aria-hidden="true"
+            />
+            <div className="relative left-[19.72%] aspect-441/857 w-[59.985%] overflow-hidden motion-safe:animate-[hero-float_6s_ease-in-out_infinite]">
+              <Image
+                src="/landing-page/hero/invoice-phone.webp"
+                alt="Kairo WhatsApp conversation creating an invoice and sharing a payment link"
+                width={4000}
+                height={3000}
+                sizes="(max-width: 767px) 190vw, (max-width: 1023px) 1470px, 90vw"
+                priority
+                className="absolute top-[-12.51%] left-[-64.62%] h-[128.53%] w-[333.33%] max-w-none"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

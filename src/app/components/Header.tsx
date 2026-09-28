@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { businessMailto } from "@/app/constants/contact";
+import { Icon } from "@iconify/react";
 
 const mainNavLinks = [
   { label: "Home", href: "/" },
@@ -123,7 +124,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray/80 bg-background">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-gray/80 bg-white">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-8">
@@ -131,7 +132,13 @@ export function Header() {
               href="/"
               className="w-auto h-9 font-bold tracking-tight text-foreground transition-opacity duration-200 ease-in-out hover:opacity-80"
             >
-              <Image src="/kairo-assets/kairo-logo.webp" loading="eager" alt="Kairo" width={100} height={100} />
+              <Image
+                src="/kairo-assets/kairo-logo.webp"
+                loading="eager"
+                alt="Kairo"
+                width={100}
+                height={100}
+              />
             </Link>
 
             <nav
@@ -151,8 +158,13 @@ export function Header() {
             className="hidden items-center gap-4 md:flex"
           >
             <NavLink href="#login">Login</NavLink>
-            <Link href={businessMailto("Get started with Kairo")} className={ctaClassName}>
-              Get started
+            <Link
+              href={businessMailto("Get started with Kairo")}
+              className={`${ctaClassName} text-center flex items-center gap-1 justify-center`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <Icon icon="ic:outline-whatsapp" width={16} height={16} />
+              Chat with Kairo
             </Link>
           </nav>
 
@@ -165,10 +177,11 @@ export function Header() {
         <nav
           id="mobile-menu"
           aria-label="Mobile navigation"
-          className={`overflow-hidden border-t border-gray/80 transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${mobileMenuOpen
-            ? "max-h-96 opacity-100"
-            : "max-h-0 opacity-0 border-t-transparent"
-            }`}
+          className={`overflow-hidden border-t border-gray/80 transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
+            mobileMenuOpen
+              ? "max-h-96 opacity-100"
+              : "max-h-0 opacity-0 border-t-transparent"
+          }`}
         >
           <div className="flex flex-col gap-4 py-4">
             {mainNavLinks.map(({ label, href }) => (
@@ -187,10 +200,11 @@ export function Header() {
               </NavLink>
               <Link
                 href={businessMailto("Get started with Kairo")}
-                className={`${ctaClassName} text-center`}
+                className={`${ctaClassName} text-center flex items-center gap-2 justify-center`}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Get started
+                <Icon icon="ic:outline-whatsapp" width={16} height={16} />
+                Chat with Kairo
               </Link>
             </div>
           </div>
