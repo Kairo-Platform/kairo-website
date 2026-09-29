@@ -365,7 +365,7 @@ function InvoiceCard() {
       </header>
       <div className="eyn-invoice-preview mx-auto mt-9.75 w-[75.68%] max-w-97.25">
         <Image
-          src={`${ASSET}/invoice-preview.svg`}
+          src={`${ASSET}/invoice-preview.webp`}
           alt="Professional invoice for Kehinde Femi Enterprise with four ebook line items and a subtotal of NGN20,000"
           width={389}
           height={353}
