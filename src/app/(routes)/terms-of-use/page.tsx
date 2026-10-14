@@ -47,6 +47,7 @@ const tableOfContents = [
   { id: "dispute-resolution", label: "Dispute Resolution & Governing Law" },
   { id: "changes-to-terms", label: "Changes to These Terms" },
   { id: "general-provisions", label: "General Provisions" },
+  { id: "cooperative-society-membership", label: "Cooperative Society Membership" },
   { id: "contact-us", label: "Contact Us" },
 ];
 
@@ -78,7 +79,7 @@ export default function TermsOfUsePage() {
     <LegalPage>
       <LegalPageHeader
         title="Terms of Use"
-        lastUpdated="Last updated: June 30, 2026"
+        lastUpdated="Last updated: October 14, 2026"
       />
 
       <LegalIntro>
@@ -604,6 +605,59 @@ export default function TermsOfUsePage() {
               other events of force majeure.
             </LegalParagraph>
           </LegalSubsection>
+        </LegalSection>
+
+        <LegalSection
+          id="cooperative-society-membership"
+          title="Cooperative Society Membership"
+        >
+          <LegalParagraph>
+            Kairo is the digital platform of First Frontier Technologist
+            Cooperative Investment And Credit Society Limited (the
+            &ldquo;Society&rdquo;). The Society provides its cooperative services
+            through Kairo and will use the platform to manage membership,
+            communicate with members, and provide access to its services.
+          </LegalParagraph>
+          <LegalParagraph>
+            When you complete signup for a Kairo account and accept these Terms,
+            you become a member of the Society, subject to the Society&apos;s
+            membership requirements. Your membership begins upon completion of
+            signup and acceptance of these Terms. There is no registration fee
+            for becoming a member.
+          </LegalParagraph>
+          <LegalParagraph>
+            After signup, the Society will make its registered bye-laws and
+            applicable membership terms available to you through Kairo or
+            another communication channel. Those documents describe the
+            Society&apos;s governance and the rights and responsibilities of its
+            members. You are responsible for reviewing them after they are made
+            available and for keeping your contact details up to date so the
+            Society can send you membership information.
+          </LegalParagraph>
+          <LegalParagraph>
+            Membership may entitle you to access cooperative services and
+            participate in Society activities, subject to the Society&apos;s
+            rules, eligibility requirements, and any conditions that apply to
+            the relevant service or activity. Membership does not guarantee
+            access to every product, service, benefit, loan, or other facility
+            offered by the Society; additional eligibility criteria or approval
+            may apply.
+          </LegalParagraph>
+          <LegalParagraph>
+            There is no registration fee. If the Society introduces or applies
+            any other membership contribution, charge, or payment obligation,
+            it will communicate the amount, purpose, and applicable terms to
+            you before the payment is due. Any such obligation will be governed
+            by the Society&apos;s registered bye-laws and applicable membership
+            terms.
+          </LegalParagraph>
+          <LegalParagraph>
+            You may contact the Society through Kairo to ask questions about
+            your membership, request a copy of the bye-laws, or learn how to
+            withdraw from membership. Withdrawal, suspension, or termination of
+            membership will be handled in accordance with the Society&apos;s
+            registered bye-laws and applicable law.
+          </LegalParagraph>
         </LegalSection>
 
         <LegalSection id="contact-us" title="Contact Us">
