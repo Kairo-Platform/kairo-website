@@ -112,7 +112,7 @@ export default function TermsOfUsePage() {
       <LegalTableOfContents items={tableOfContents} />
 
       <div className="mt-16">
-        <LegalSection id="eligibility" title="Eligibility">
+        <LegalSection id="eligibility" title="1. Eligibility">
           <LegalParagraph>
             To use Kairo&apos;s Services, you must:
           </LegalParagraph>
@@ -133,7 +133,7 @@ export default function TermsOfUsePage() {
           </LegalParagraph>
         </LegalSection>
 
-        <LegalSection id="kairo-personal" title="Kairo Personal — Terms of Use">
+        <LegalSection id="kairo-personal" title="2. Kairo Personal — Terms of Use">
           <LegalSubsection title="2.1 Wallet services">
             <LegalParagraph>
               Kairo Personal provides you with a digital wallet in accordance
@@ -184,7 +184,7 @@ export default function TermsOfUsePage() {
           </LegalSubsection>
         </LegalSection>
 
-        <LegalSection id="kairo-business" title="Kairo Business — Terms of Use">
+        <LegalSection id="kairo-business" title="3. Kairo Business — Terms of Use">
           <LegalSubsection title="3.1 Business wallet and account">
             <LegalParagraph>
               Kairo Business provides a business wallet, invoicing tools, a
@@ -251,7 +251,7 @@ export default function TermsOfUsePage() {
 
         <LegalSection
           id="kairo-enterprise"
-          title="Kairo Enterprise — Terms of Use"
+          title="4. Kairo Enterprise — Terms of Use"
         >
           <LegalSubsection title="4.1 Relationship to the Master Services Agreement">
             <LegalParagraph>
@@ -335,7 +335,7 @@ export default function TermsOfUsePage() {
           />
         </LegalSection>
 
-        <LegalSection id="fees-and-charges" title="Fees & Charges">
+        <LegalSection id="fees-and-charges" title="6. Fees & Charges">
           <LegalParagraph>
             Transaction fees as disclosed at time of transaction; subject to
             change with notice.
@@ -356,7 +356,7 @@ export default function TermsOfUsePage() {
           </LegalParagraph>
         </LegalSection>
 
-        <LegalSection id="prohibited-uses" title="Prohibited Uses">
+        <LegalSection id="prohibited-uses" title="7. Prohibited Uses">
           <LegalParagraph>You agree not to use the Services to:</LegalParagraph>
           <LegalList
             items={[
@@ -375,7 +375,7 @@ export default function TermsOfUsePage() {
 
         <LegalSection
           id="ai-features"
-          title="AI Features, Conversational Commands & Your Responsibility"
+          title="8. AI Features, Conversational Commands & Your Responsibility"
         >
           <LegalParagraph>
             Kairo&apos;s Services rely on artificial intelligence to interpret
@@ -395,7 +395,7 @@ export default function TermsOfUsePage() {
           />
         </LegalSection>
 
-        <LegalSection id="intellectual-property" title="Intellectual Property">
+        <LegalSection id="intellectual-property" title="9. Intellectual Property">
           <LegalParagraph>
             The Services, including all software, designs, text, graphics, logos,
             and the Kairo name and trademarks, are owned by Kairo or its
@@ -415,7 +415,7 @@ export default function TermsOfUsePage() {
 
         <LegalSection
           id="third-party-services"
-          title="Third-Party Services (Including WhatsApp)"
+          title="10. Third-Party Services (Including WhatsApp)"
         >
           <LegalParagraph>
             Kairo Personal and Kairo Business operate primarily through WhatsApp,
@@ -439,7 +439,7 @@ export default function TermsOfUsePage() {
 
         <LegalSection
           id="disclaimers"
-          title="Disclaimers & Limitation of Liability"
+          title="11. Disclaimers & Limitation of Liability"
         >
           <LegalSubsection title="11.1 Service provided “as is”">
             <LegalParagraph>
@@ -471,7 +471,7 @@ export default function TermsOfUsePage() {
           </LegalSubsection>
         </LegalSection>
 
-        <LegalSection id="indemnification" title="Indemnification">
+        <LegalSection id="indemnification" title="12. Indemnification">
           <LegalParagraph>
             You agree to indemnify, defend, and hold harmless Kairo, its
             officers, directors, employees, and agents from and against any
@@ -485,7 +485,7 @@ export default function TermsOfUsePage() {
           </LegalParagraph>
         </LegalSection>
 
-        <LegalSection id="suspension-termination" title="Suspension & Termination">
+        <LegalSection id="suspension-termination" title="13. Suspension & Termination">
           <LegalSubsection title="13.1 Termination by you">
             <LegalParagraph>
               You may stop using the Services and close your account at any time
@@ -525,7 +525,7 @@ export default function TermsOfUsePage() {
 
         <LegalSection
           id="dispute-resolution"
-          title="Dispute Resolution & Governing Law"
+          title="14. Dispute Resolution & Governing Law"
         >
           <LegalSubsection title="14.1 Governing law">
             <LegalParagraph>
@@ -552,7 +552,7 @@ export default function TermsOfUsePage() {
           </LegalSubsection>
         </LegalSection>
 
-        <LegalSection id="changes-to-terms" title="Changes to These Terms">
+        <LegalSection id="changes-to-terms" title="15. Changes to These Terms">
           <LegalParagraph>
             Kairo may update these Terms from time to time to reflect changes in
             our Services, legal or regulatory requirements, or for other
@@ -565,7 +565,7 @@ export default function TermsOfUsePage() {
           </LegalParagraph>
         </LegalSection>
 
-        <LegalSection id="general-provisions" title="General Provisions">
+        <LegalSection id="general-provisions" title="16. General Provisions">
           <LegalSubsection title="16.1 Entire agreement">
             <LegalParagraph>
               These Terms, together with our Privacy Policy and (where
@@ -609,7 +609,7 @@ export default function TermsOfUsePage() {
 
         <LegalSection
           id="cooperative-society-membership"
-          title="Cooperative Society Membership"
+          title="17. Cooperative Society Membership"
         >
           <LegalParagraph>
             Kairo is the digital platform of First Frontier Technologist
@@ -660,7 +660,7 @@ export default function TermsOfUsePage() {
           </LegalParagraph>
         </LegalSection>
 
-        <LegalSection id="contact-us" title="Contact Us">
+        <LegalSection id="contact-us" title="18. Contact Us">
           <LegalParagraph>
             If you have questions about these Terms, please contact:
           </LegalParagraph>

@@ -120,7 +120,7 @@ export default function PrivacyPolicyPage() {
       <LegalTableOfContents items={tableOfContents} />
 
       <div className="mt-16">
-        <LegalSection id="who-this-policy-covers" title="Who This Policy Covers">
+        <LegalSection id="who-this-policy-covers" title="1. Who This Policy Covers">
           <LegalSubsection title="1.1 Kairo Personal users">
             <LegalParagraph>
               Individuals who create a Kairo wallet to send money, receive
@@ -153,7 +153,7 @@ export default function PrivacyPolicyPage() {
           </LegalSubsection>
         </LegalSection>
 
-        <LegalSection id="information-we-collect" title="Information We Collect">
+        <LegalSection id="information-we-collect" title="2. Information We Collect">
           <LegalParagraph>
             We collect information in three ways: information you provide
             directly, information collected automatically through your use of
@@ -208,7 +208,7 @@ export default function PrivacyPolicyPage() {
           </LegalSubsection>
         </LegalSection>
 
-        <LegalSection id="how-we-use" title="How We Use Your Information">
+        <LegalSection id="how-we-use" title="3. How We Use Your Information">
           <LegalParagraph>We use the information we collect to:</LegalParagraph>
           <LegalList
             items={[
@@ -241,7 +241,7 @@ export default function PrivacyPolicyPage() {
           </LegalSubsection>
         </LegalSection>
 
-        <LegalSection id="legal-basis" title="Legal Basis for Processing">
+        <LegalSection id="legal-basis" title="4. Legal Basis for Processing">
           <LegalParagraph>
             Depending on your location and applicable law (including the Nigeria
             Data Protection Act 2023 and, where relevant, the EU General Data
@@ -251,7 +251,7 @@ export default function PrivacyPolicyPage() {
           <LegalKeyValueList items={legalBasisItems} />
         </LegalSection>
 
-        <LegalSection id="how-we-share" title="How We Share Your Information">
+        <LegalSection id="how-we-share" title="5. How We Share Your Information">
           <LegalParagraph>
             We do not sell your personal information. We share information only
             in the following circumstances:
@@ -329,7 +329,7 @@ export default function PrivacyPolicyPage() {
 
         <LegalSection
           id="bvn-kyc"
-          title="BVN, KYC & Identity Verification"
+          title="6. BVN, KYC & Identity Verification"
         >
           <LegalParagraph>
             This section addresses the collection and use of your Bank
@@ -350,7 +350,7 @@ export default function PrivacyPolicyPage() {
 
         <LegalSection
           id="data-storage-security-retention"
-          title="Data Storage, Security & Retention"
+          title="7. Data Storage, Security & Retention"
         >
           <LegalSubsection title="Security measures">
             <LegalList
@@ -381,7 +381,7 @@ export default function PrivacyPolicyPage() {
           </LegalSubsection>
         </LegalSection>
 
-        <LegalSection id="your-rights" title="Your Rights">
+        <LegalSection id="your-rights" title="8. Your Rights">
           <LegalParagraph>
             Subject to applicable law (including the Nigeria Data Protection Act
             2023 and, where applicable, GDPR), you have the right to:
@@ -407,7 +407,7 @@ export default function PrivacyPolicyPage() {
 
         <LegalSection
           id="whatsapp-third-party"
-          title="WhatsApp & Third-Party Channels"
+          title="9. WhatsApp & Third-Party Channels"
         >
           <LegalParagraph>
             Kairo Personal and Kairo Business operate primarily through
@@ -424,7 +424,7 @@ export default function PrivacyPolicyPage() {
           />
         </LegalSection>
 
-        <LegalSection id="cookies-tracking" title="Cookies & Tracking (Website)">
+        <LegalSection id="cookies-tracking" title="10. Cookies & Tracking (Website)">
           <LegalParagraph>
             When you visit our website (and, where applicable, the Kairo
             Business web dashboard), we and our service providers may use
@@ -448,7 +448,7 @@ export default function PrivacyPolicyPage() {
           </LegalParagraph>
         </LegalSection>
 
-        <LegalSection id="childrens-privacy" title="Children's Privacy">
+        <LegalSection id="childrens-privacy" title="11. Children's Privacy">
           <LegalParagraph>
             Kairo&apos;s Services are intended for individuals who are at least
             18 years old, or who meet the minimum age for entering binding
@@ -460,7 +460,7 @@ export default function PrivacyPolicyPage() {
           </LegalParagraph>
         </LegalSection>
 
-        <LegalSection id="changes-to-policy" title="Changes to This Policy">
+        <LegalSection id="changes-to-policy" title="12. Changes to This Policy">
           <LegalParagraph>
             We may update this Privacy Policy from time to time to reflect
             changes in our practices, technology, legal requirements, or for
@@ -474,7 +474,7 @@ export default function PrivacyPolicyPage() {
 
         <LegalSection
           id="contact-us"
-          title="Contact Us & Grievance Redressal"
+          title="13. Contact Us & Grievance Redressal"
         >
           <LegalParagraph>
             If you have questions, concerns, or requests regarding this Privacy
