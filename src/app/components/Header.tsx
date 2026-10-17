@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { businessMailto } from "@/app/constants/contact";
+import { KAIRO_CONTACT } from "@/app/constants/contact";
 import { Icon } from "@iconify/react";
 
 const mainNavLinks = [
@@ -159,7 +159,9 @@ export function Header() {
           >
             <NavLink href="#login">Login</NavLink>
             <Link
-              href={businessMailto("Get started with Kairo")}
+              href={KAIRO_CONTACT.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`${ctaClassName} text-center flex items-center gap-1 justify-center`}
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -199,7 +201,9 @@ export function Header() {
                 Login
               </NavLink>
               <Link
-                href={businessMailto("Get started with Kairo")}
+                href={KAIRO_CONTACT.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${ctaClassName} text-center flex items-center gap-2 justify-center`}
                 onClick={() => setMobileMenuOpen(false)}
               >

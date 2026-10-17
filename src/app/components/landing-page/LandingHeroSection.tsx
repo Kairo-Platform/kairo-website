@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import { Instrument_Sans } from "next/font/google";
-import { businessMailto } from "@/app/constants/contact";
+import { KAIRO_CONTACT } from "@/app/constants/contact";
 import Reveal from "../Reveal";
 import Link from "next/link";
 
@@ -42,7 +42,9 @@ export function LandingHeroSection() {
             </Reveal>
             <Reveal animation="bottom" className="delay-300">
               <Link
-                href={businessMailto("Start chatting with Kairo")}
+                href={KAIRO_CONTACT.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-7 inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-[36px] bg-orange py-3 pr-5 pl-3.5 text-[15px] leading-5 font-medium tracking-[-0.01em] text-white transition-[translate,scale,background-color,box-shadow] duration-300 ease-out hover:bg-orange-dark hover:shadow-lg hover:shadow-orange/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange motion-safe:hover:translate-x-1 motion-safe:hover:-translate-y-1 motion-safe:active:scale-98 motion-reduce:transition-none lg:mt-12.25"
               >
                 <Icon

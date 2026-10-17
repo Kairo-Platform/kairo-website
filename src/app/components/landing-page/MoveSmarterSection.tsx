@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { Reveal } from "@/app/components";
-import { businessMailto } from "@/app/constants/contact";
+import { KAIRO_CONTACT } from "@/app/constants/contact";
 import Link from "next/link";
 
 export function MoveSmarterSection() {
@@ -28,7 +28,9 @@ export function MoveSmarterSection() {
             control of their money on Kairo. Free to start.
           </p>
           <Link
-            href={businessMailto("Start on WhatsApp with Kairo")}
+            href={KAIRO_CONTACT.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="cta-button-black mt-8"
           >
             <Icon icon="ic:outline-whatsapp" width={16} height={16} />

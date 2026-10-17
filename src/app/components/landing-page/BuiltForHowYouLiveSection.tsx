@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { Reveal } from "@/app/components";
-import { businessMailto } from "@/app/constants/contact";
+import { KAIRO_CONTACT } from "@/app/constants/contact";
 import { StackedStepCards } from "@/app/components/StackedStepCards";
 
 const steps = [
@@ -79,7 +79,9 @@ export function BuiltForHowYouLiveSection() {
             </h2>
           </div>
           <Link
-            href={businessMailto("Start chatting with Kairo")}
+            href={KAIRO_CONTACT.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex h-11 w-fit shrink-0 items-center justify-center gap-2 rounded-full bg-orange pr-5 pl-3.5 text-[15px] leading-5 font-medium tracking-[-0.01em] text-white transition-[translate,background-color,box-shadow] duration-300 ease-out hover:bg-orange-dark hover:shadow-lg hover:shadow-orange/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange motion-safe:hover:translate-x-1 motion-safe:hover:-translate-y-1 motion-reduce:transition-none sm:mb-2"
           >
             <Icon

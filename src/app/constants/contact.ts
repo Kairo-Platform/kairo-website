@@ -3,6 +3,7 @@ export const KAIRO_CONTACT = {
   privacyEmail: "privacy@usekairo.co",
   legalEmail: "legal@usekairo.co",
   businessEmail: "business@usekairo.co",
+  whatsappUrl: "https://wa.me/2347014391423?text=Hi%2C%20Kairo%21",
   legalEntityName: "First Frontier Technologies Limited",
 } as const;
 
